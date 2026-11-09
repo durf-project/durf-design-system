@@ -1,0 +1,221 @@
+/* DURF design system v1.0
+   Laag bovenop oat (https://oat.ink, @knadh/oat@1.0.0, MIT).
+   Laad eerst oat.min.css en daarna dit bestand. Alles hieronder is
+   ongelaagd en wint dus van de @layer-regels van oat. */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap");
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  color-scheme: light dark;
+
+  /* Merkpalet (zoals in de position paper) */
+  --durf-black: #050E1D;
+  --durf-blue: #177ABF;
+  --durf-orange: #EE7628;
+  --durf-purple: #5C1B61;
+  --durf-green: #17A95D;
+  --durf-yellow: #F6DA44;
+
+  /* Accent per thema: vaste waarde voor vlakken en tekst, met de tekstkleur erop.
+     Standaard blauw. Overschrijf met <html data-accent="yellow"> enz. */
+  --accent-solid: light-dark(#177ABF, #5BB0EA);
+  --accent-on: light-dark(#FFFFFF, #04223A);
+
+  /* Oat-tokens, opnieuw ingekleurd */
+  --background: light-dark(#FFFFFF, #0F1218);
+  --foreground: light-dark(#050E1D, #E7E9EE);
+  --card: light-dark(#FFFFFF, #1A1E26);
+  --card-foreground: var(--foreground);
+  --primary: var(--accent-solid);
+  --primary-foreground: var(--accent-on);
+  --secondary: light-dark(#EAECF0, #262A33);
+  --secondary-foreground: var(--foreground);
+  --muted: light-dark(#F4F6F8, #20242C);
+  --muted-foreground: light-dark(#5E6873, #9AA1AD);
+  --faint: light-dark(#F9FAFB, #171A21);
+  --faint-foreground: light-dark(#8C969F, #6F7785);
+  --accent: color-mix(in srgb, var(--accent-solid) 12%, var(--background));
+  --border: light-dark(#EAECF0, #2C303A);
+  --input: light-dark(#CDD0D5, #3A3F4A);
+  --ring: var(--accent-solid);
+  --danger: light-dark(#C0364A, #EF6572);
+  --success: light-dark(#0B7A40, #4CC585);
+  --warning: light-dark(#A65B00, #F0A742);
+
+  /* Extra tokens */
+  --surface: light-dark(#F4F6F8, #14161B);          /* app-achtergrond achter kaarten */
+  --link: light-dark(#177ABF, #5BB0EA);
+  --durf-yellow-wash: light-dark(#FEF8D3, #2D2914);
+
+  /* Datakleuren voor grafieken en statussen */
+  --chart-good: light-dark(#1F9D55, #3EC46D);
+  --chart-warn: light-dark(#D97706, #F0A742);
+  --chart-bad: light-dark(#D1495B, #EF6572);
+  --chart-none: light-dark(#B2B6BE, #4A505C);
+  --chart-grid: light-dark(#EAECF0, #262A33);
+
+  /* Typografie */
+  --font-sans: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: Nunito, "Source Sans 3", sans-serif;
+
+  /* Layout */
+  --topbar-h: 3.25rem;
+  --reading-width: 46rem;
+  --page-width: 80rem;
+}
+
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
+
+/* Accenten per DURF-thema. Kies er één per site of pagina. */
+:root[data-accent="blue"]   { --accent-solid: light-dark(#177ABF, #5BB0EA); --accent-on: light-dark(#FFFFFF, #04223A); }
+:root[data-accent="orange"] { --accent-solid: light-dark(#B85410, #F29A5E); --accent-on: light-dark(#FFFFFF, #2A1204); }
+:root[data-accent="purple"] { --accent-solid: light-dark(#5C1B61, #D9A3DE); --accent-on: light-dark(#FFFFFF, #2A0D2D); }
+:root[data-accent="green"]  { --accent-solid: light-dark(#0B7A40, #4CC585); --accent-on: light-dark(#FFFFFF, #04210F); }
+:root[data-accent="yellow"] { --accent-solid: light-dark(#8C6E00, #F6DA44); --accent-on: light-dark(#FFFFFF, #1A1600); }
+
+/* ---------- 2. Basis ---------- */
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + 1rem); }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.01em; }
+a { color: var(--link); }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+.durf-shell { max-width: var(--page-width); margin-inline: auto; padding-inline: 1.5rem; }
+.durf-shell.narrow { max-width: calc(var(--reading-width) + 3rem); }
+body.app { background: var(--surface); }
+
+/* ---------- 3. Topbalk met sitemenu ---------- */
+.durf-topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.durf-topbar__inner {
+  display: flex; align-items: center; gap: 1.25rem;
+  height: var(--topbar-h);
+  max-width: var(--page-width); margin-inline: auto; padding-inline: 1rem;
+}
+.durf-topbar__brand {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: var(--font-heading); font-weight: 800; font-size: 1.125rem;
+  color: var(--foreground); text-decoration: none; flex: 0 0 auto;
+}
+.durf-topbar__brand img { width: 2rem; height: 2rem; border-radius: 50%; display: block; }
+.durf-topbar__nav { display: flex; align-items: stretch; align-self: stretch; gap: .25rem; margin: 0; padding: 0; list-style: none; }
+.durf-topbar__nav li { display: flex; margin: 0; padding: 0; }
+.durf-topbar__nav a {
+  display: inline-flex; align-items: center; padding: 0 .75rem;
+  color: var(--muted-foreground); font-weight: 600; font-size: .9375rem; text-decoration: none;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.durf-topbar__nav a:hover { color: var(--foreground); }
+.durf-topbar__nav a[aria-current="page"] { color: var(--foreground); border-bottom-color: var(--accent-solid); }
+.durf-topbar__spacer { flex: 1; }
+.durf-topbar__btn {
+  display: inline-grid; place-items: center; width: 2.25rem; height: 2.25rem; padding: 0;
+  background: transparent; color: var(--muted-foreground);
+  border: 1px solid transparent; border-radius: .5rem; cursor: pointer;
+}
+.durf-topbar__btn:hover { background: var(--muted); color: var(--foreground); }
+.durf-topbar__btn svg { width: 1.1rem; height: 1.1rem; }
+.durf-topbar__menu-btn { display: none; }
+
+@media (max-width: 52rem) {
+  .durf-topbar__menu-btn { display: inline-grid; }
+  .durf-topbar__nav {
+    display: none; position: absolute; inset: var(--topbar-h) 0 auto 0;
+    flex-direction: column; gap: 0; padding: .5rem 1rem 1rem;
+    background: var(--card); border-bottom: 1px solid var(--border);
+  }
+  .durf-topbar[data-open] .durf-topbar__nav { display: flex; }
+  .durf-topbar__nav li { display: block; width: 100%; }
+  .durf-topbar__nav a { display: flex; padding: .75rem .25rem; border-bottom: 1px solid var(--border); margin: 0; }
+  .durf-topbar__nav a[aria-current="page"] { border-bottom-color: var(--border); color: var(--accent-solid); }
+}
+html[data-embed] .durf-topbar { display: none; }
+
+/* Voor oat's sidebar-layout: trek de balk van de hoogte af */
+body[data-sidebar-layout] #app-shell,
+.app-shell { height: calc(100dvh - var(--topbar-h)); }
+
+/* ---------- 4. Paginakop ---------- */
+.durf-page-head { border-bottom: 1px solid var(--border); padding-block: 2.5rem 2rem; }
+.durf-page-head__inner { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+.durf-page-head__logo { width: 7rem; height: 7rem; flex: 0 0 auto; }
+.durf-page-head__text { flex: 1 1 20rem; min-width: 0; }
+.durf-page-head h1 { margin: 0; font-size: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem); line-height: 1.1; }
+.durf-page-head .byline { margin: .6rem 0 0; color: var(--muted-foreground); font-weight: 600; }
+.durf-page-head .links { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .9375rem; font-weight: 600; }
+.durf-page-head .links a { text-decoration: none; }
+.durf-page-head .links a:hover { text-decoration: underline; }
+
+/* Compacte kop voor dashboards */
+.durf-page-head.compact { padding-block: 1.25rem; }
+.durf-page-head.compact h1 { font-size: 1.5rem; }
+
+/* ---------- 5. Status-tag ---------- */
+.durf-tag {
+  display: inline-block; padding: .1rem .6rem; border-radius: 999px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .02em; vertical-align: middle;
+  background: var(--muted); color: var(--muted-foreground);
+}
+.durf-tag[data-tone="draft"] { background: var(--durf-yellow-wash); color: light-dark(#6B5900, #E8D67A); }
+.durf-tag[data-tone="good"]  { background: color-mix(in srgb, var(--chart-good) 16%, transparent); color: var(--success); }
+.durf-tag[data-tone="warn"]  { background: color-mix(in srgb, var(--chart-warn) 16%, transparent); color: var(--warning); }
+.durf-tag[data-tone="bad"]   { background: color-mix(in srgb, var(--chart-bad) 16%, transparent); color: var(--danger); }
+
+/* ---------- 6. Leesbare tekst ---------- */
+.durf-prose { max-width: var(--reading-width); }
+.durf-prose h1 { font-size: 1.875rem; margin: 2.75rem 0 1rem; padding-top: 1.5rem; border-top: 3px solid var(--accent-solid); }
+.durf-prose > h1:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.durf-prose h2 { font-size: 1.375rem; margin: 2.25rem 0 .75rem; }
+.durf-prose h3 { font-size: 1.125rem; margin: 1.75rem 0 .5rem; }
+.durf-prose p, .durf-prose ul, .durf-prose ol { margin: 0 0 1.1rem; }
+.durf-prose ul, .durf-prose ol { padding-left: 1.5rem; }
+.durf-prose li { margin-bottom: .4rem; }
+.durf-prose a { font-weight: 600; }
+.durf-prose img { max-width: 100%; height: auto; border: 1px solid var(--border); border-radius: .5rem; }
+.durf-prose blockquote { margin: 0 0 1.1rem; padding: .25rem 0 .25rem 1rem; border-left: 3px solid var(--border); color: var(--muted-foreground); }
+.durf-prose code { font-size: .9em; padding: .1em .35em; border-radius: .25rem; background: var(--muted); }
+
+/* ---------- 7. Kaarten, kerncijfers, callouts ---------- */
+.durf-card { background: var(--card); border: 1px solid var(--border); border-radius: .5rem; padding: 1rem 1.25rem; }
+.durf-kpi { background: var(--card); border: 1px solid var(--border); border-radius: .5rem; padding: .9rem 1.1rem; }
+.durf-kpi .value { font-family: var(--font-heading); font-weight: 800; font-size: 1.875rem; line-height: 1.1; color: var(--kpi-color, var(--foreground)); }
+.durf-kpi .label { margin-top: .25rem; font-size: .875rem; color: var(--muted-foreground); }
+.durf-kpi .check { margin-top: .25rem; font-family: ui-monospace, Consolas, monospace; font-size: .6875rem; color: var(--muted-foreground); overflow-wrap: anywhere; }
+
+.durf-callout {
+  margin: 0 0 1.25rem; padding: .9rem 1.1rem;
+  border: 1px solid var(--border); border-left: 4px solid var(--callout-color, var(--accent-solid));
+  border-radius: .5rem; background: var(--card);
+}
+.durf-callout > :last-child { margin-bottom: 0; }
+.durf-callout[data-tone="good"] { --callout-color: var(--chart-good); }
+.durf-callout[data-tone="warn"] { --callout-color: var(--chart-warn); }
+.durf-callout[data-tone="bad"]  { --callout-color: var(--chart-bad); }
+
+/* Themablok: kleurt mee met het DURF-thema */
+.durf-theme-block { border-left: 4px solid var(--theme-color, var(--accent-solid)); padding: .25rem 0 .25rem 1rem; margin: 0 0 1.25rem; }
+[data-theme-n="1"] { --theme-color: var(--durf-blue); }
+[data-theme-n="2"] { --theme-color: light-dark(#C9A800, #F6DA44); }
+[data-theme-n="3"] { --theme-color: var(--durf-orange); }
+[data-theme-n="4"] { --theme-color: var(--durf-purple); }
+[data-theme-n="5"] { --theme-color: var(--durf-green); }
+
+/* ---------- 8. Voet ---------- */
+.durf-footer { margin-top: 3rem; padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: .875rem; }
+.durf-footer a { font-weight: 600; }
+html[data-embed] .durf-footer, html[data-embed] .durf-page-head { display: none; }
