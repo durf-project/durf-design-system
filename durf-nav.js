@@ -10,6 +10,7 @@
 
   // Eén bron voor het menu. Pas hier aan, alle sites volgen na een nieuwe release.
   var SITES = [
+    { slug: 'project-page',               label: 'Home' },
     { slug: 'position-paper',             label: 'Position paper' },
     { slug: 'durf-gantt',                 label: 'Roadmap' },
     { slug: 'durf-data-mesh-architecture', label: 'Data contracts' },
@@ -62,7 +63,7 @@
 
     bar.innerHTML =
       '<div class="durf-topbar__inner">' +
-        '<a class="durf-topbar__brand" href="' + BASE + 'position-paper/"><img src="' + LOGO + '" alt="">DURF</a>' +
+        '<a class="durf-topbar__brand" href="' + BASE + 'project-page/"><img src="' + LOGO + '" alt="">DURF</a>' +
         '<nav aria-label="DURF"><ul class="durf-topbar__nav" id="durf-nav-list">' + links + '</ul></nav>' +
         '<span class="durf-topbar__spacer"></span>' +
         '<button class="durf-topbar__btn" type="button" id="durf-theme-btn"></button>' +
