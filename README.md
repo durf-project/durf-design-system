@@ -22,6 +22,16 @@ Optioneel kies je een accent per site met `<html data-accent="yellow">` (blue, o
 
 Het menu staat in de lijst `SITES` bovenin `durf-nav.js`. Pas het daar aan en alle sites volgen. De actieve pagina wordt herkend aan het eerste deel van het pad (`/position-paper/`, `/dashboards/` enzovoort). Het eerste item, Home, is de projectpagina (`/project-page/`). Het DURF-logo links in de balk gaat naar https://durf-project.github.io/, dat via de repo `durf-project.github.io` doorverwijst naar diezelfde projectpagina. Logo en favicon komen uit `project-page/assets/`.
 
+## Feedbackknop
+
+`durf-nav.js` zet op elke pagina rechtsonder een zwevende knop Feedback. Die opent een uitnodigende dialoog: alle feedback helpt, we lezen het als betrokkenheid en niet als kritiek, en we bouwen DURF samen. De dialoog noemt wie de feedback leest en beantwoordt, en het adres durf@surf.nl. Versturen kan op twee manieren. De ene opent een vooraf ingevuld issue in de repo waar de pagina staat, met het sjabloon `.github/ISSUE_TEMPLATE/feedback.yml` (velden `page`, `feedback`, `contact`). De andere opent een e-mail aan durf@surf.nl.
+
+Wie antwoordt staat in `THEME_LEADS` (per thema) en `SITE_CONTACTS` (per site) in `durf-nav.js`. Een dashboard geeft zijn thema door met `data-durf-theme="2"` op `<html>` of op de script-tag. De repo volgt uit het eerste deel van het pad; onbekende adressen gaan naar `project-page`, en `data-feedback-repo` op `<html>` overschrijft dat. In embeds (`?embed`) verschijnt de knop niet.
+
+De knop zit in een shadow root, zodat hij niet botst met oat, marimo of de pagina zelf, maar leest wel de DURF-tokens. Daardoor werkt hij ook op pagina's zonder `durf.css`. Voor zulke pagina's, zoals de marimo-dashboards, laad je alleen het script zonder topbalk:
+
+    <script src="https://durf-project.github.io/durf-design-system/durf-nav.js" data-topbar="off" data-durf-theme="4"></script>
+
 ## Afspraken met de bestaande sites
 
 De themasleutel is `durf-theme` in localStorage, dezelfde als in de position paper. De embed-afspraak (`html[data-embed]`, `postMessage` met `durf-embed-theme`) blijft werken, en de topbalk, paginakop en voet verdwijnen in embeds.
