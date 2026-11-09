@@ -20,7 +20,7 @@ Optioneel kies je een accent per site met `<html data-accent="yellow">` (blue, o
 
 ## Het menu aanpassen
 
-Het menu staat in de lijst `SITES` bovenin `durf-nav.js`. Pas het daar aan en alle sites volgen. De actieve pagina wordt herkend aan het eerste deel van het pad (`/position-paper/`, `/dashboards/` enzovoort).
+Het menu staat in de lijst `SITES` bovenin `durf-nav.js`. Pas het daar aan en alle sites volgen. De actieve pagina wordt herkend aan het eerste deel van het pad (`/position-paper/`, `/dashboards/` enzovoort). Het eerste item, Home, is de projectpagina (`/project-page/`). Het DURF-logo links in de balk gaat naar https://durf-project.github.io/, dat via de repo `durf-project.github.io` doorverwijst naar diezelfde projectpagina. Logo en favicon komen uit `project-page/assets/`.
 
 ## Afspraken met de bestaande sites
 

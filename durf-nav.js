@@ -6,7 +6,7 @@
   'use strict';
 
   var BASE = 'https://durf-project.github.io/';
-  var LOGO = BASE + 'position-paper/assets/durf-favicon.png';
+  var LOGO = BASE + 'project-page/assets/durf-favicon.png';
 
   // Eén bron voor het menu. Pas hier aan, alle sites volgen na een nieuwe release.
   var SITES = [
@@ -63,7 +63,7 @@
 
     bar.innerHTML =
       '<div class="durf-topbar__inner">' +
-        '<a class="durf-topbar__brand" href="' + BASE + 'project-page/"><img src="' + LOGO + '" alt="">DURF</a>' +
+        '<a class="durf-topbar__brand" href="' + BASE + '"><img src="' + LOGO + '" alt="">DURF</a>' +
         '<nav aria-label="DURF"><ul class="durf-topbar__nav" id="durf-nav-list">' + links + '</ul></nav>' +
         '<span class="durf-topbar__spacer"></span>' +
         '<button class="durf-topbar__btn" type="button" id="durf-theme-btn"></button>' +
