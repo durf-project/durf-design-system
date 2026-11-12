@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Puzzle piece">
+  <!-- DURF puzzle piece: one jigsaw piece with a tab at the top and the right and a slot at the bottom,
+       like the pieces in the DURF logo. Single path, fill="currentColor"; colour it with CSS
+       (color, or as a mask with .durf-puzzle in durf.css). The body is 64 x 64 at (18,22). -->
+  <path fill="currentColor" d="M25 22H42.5C40.6 18.4 40.2 14.6 41.6 11.2A9.4 9.4 0 0 1 58.4 11.2C59.8 14.6 59.4 18.4 57.5 22H75A7 7 0 0 1 82 29V44.5C85.6 42.6 89.4 42.2 92.8 43.6A9.4 9.4 0 0 1 92.8 60.4C89.4 61.8 85.6 61.4 82 59.5V79A7 7 0 0 1 75 86H57.5C59.4 82.4 59.8 78.6 58.4 75.2A9.4 9.4 0 0 0 41.6 75.2C40.2 78.6 40.6 82.4 42.5 86H25A7 7 0 0 1 18 79V29A7 7 0 0 1 25 22Z"/>
+</svg>
