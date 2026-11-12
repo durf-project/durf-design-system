@@ -223,7 +223,7 @@
       } else if (meta.visual !== 'none') {
         vis.classList.add('durf-hero__visual--logo');
         var src = meta.visual && meta.visual !== 'logo' ? meta.visual : HERE + 'assets/durf-logo.svg';
-        vis.innerHTML = '<img class="durf-hero__logo" src="' + esc(src) + '" alt="' + esc(meta['image-alt'] || 'Dutch Repository Federation: making Dutch research global, open and resilient') + '">';
+        vis.innerHTML = '<img class="durf-hero__logo" src="' + esc(src) + '" alt="' + esc(meta['image-alt'] || 'Dutch Repository Federation: making the Dutch scholarly corpus global, open and resilient') + '">';
       }
       if (vis.childNodes.length) grid.appendChild(vis); else grid.classList.add('durf-hero--text-only');
       inner.appendChild(grid);

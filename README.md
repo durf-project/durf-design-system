@@ -137,6 +137,14 @@ De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de 
 
 ## Wijzigingen
 
+### 1.1.3
+
+Nieuw icoon `assets/icons/puzzle-piece.svg`: een puzzelstuk zoals in het DURF-logo, en de klasse `.durf-puzzle` die het in de themakleur toont, met het themanummer erin (`<span class="durf-puzzle" data-theme-n="3">3</span>`). De roadmap gebruikt dezelfde vorm. De standaard tagline is nu "Making the Dutch scholarly corpus global, open and resilient" (alt-tekst van het logo in de hero, de voorbeeldsite en `durf-og.png`). De ringtekst in het logo zelf is niet veranderd.
+
+### Waarom geen fonts-, components- of iconenmap zoals in het SURF design system
+
+Het DURF design system is een dunne laag: lettertypes (Nunito en Source Sans 3) komen van Google Fonts via `durf.css`, de componenten zijn klassen in `durf.css` en `durf-site.css` bovenop Oat (`lib/`), en er is geen React-bundel. Het neemt geen onderdelen van het SURF design system over. De SURF-pictogrammen staan er niet in, omdat dat SURF-merkmateriaal is zonder vermelde licentie; eigen iconen staan in `assets/icons/`.
+
 ### 1.1.2
 
 Nieuwe leads: thema 1 Simone Kortekaas (KB) en Maurice Vanderfeesten (SURF), thema 4 Ingeborg Verheul (KB), thema 6 vacant (`lead.vacant: true`; de feedbackdialoog noemt dan het projectteam). Projectlead is Lois van Zomeren (VU Amsterdam): `DURF.project.lead`, en `manager` wijst naar dezelfde persoon.

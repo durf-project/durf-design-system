@@ -278,6 +278,26 @@ body[data-sidebar-layout] #app-shell,
 .durf-theme-chip::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--theme-color, currentColor); }
 .durf-tag[data-theme-n] { background: var(--theme-tint); color: var(--theme-ink); }
 
+/* Puzzelstuk in de themakleur, met optioneel het themanummer erin (grootte via --durf-puzzle-size):
+   <span class="durf-puzzle" data-theme-n="3">3</span>. De vorm is assets/icons/puzzle-piece.svg
+   (lip boven en rechts, uitsparing onder), zoals de stukken in het DURF-logo. */
+.durf-puzzle {
+  --durf-puzzle-size: 2rem;
+  position: relative; isolation: isolate; flex: 0 0 auto;
+  display: inline-grid; place-items: center; box-sizing: border-box;
+  width: var(--durf-puzzle-size); height: var(--durf-puzzle-size);
+  padding: calc(var(--durf-puzzle-size) * .22) calc(var(--durf-puzzle-size) * .18) calc(var(--durf-puzzle-size) * .14);
+  font: 800 calc(var(--durf-puzzle-size) * .4)/1 var(--font-heading);
+  color: var(--theme-on, var(--accent-on)); vertical-align: middle;
+}
+.durf-puzzle::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--puzzle-color, var(--theme-color, var(--accent-solid)));
+  -webkit-mask: url("assets/icons/puzzle-piece.svg") center / contain no-repeat;
+          mask: url("assets/icons/puzzle-piece.svg") center / contain no-repeat;
+}
+@media print { .durf-puzzle::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
 /* Kleurstrook met de zes themakleuren, als merkaccent (bijvoorbeeld boven de voet) */
 .durf-colour-strip { display: flex; height: .375rem; }
 .durf-colour-strip::before { content: ""; flex: 1; background: linear-gradient(90deg,

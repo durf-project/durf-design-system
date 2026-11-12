@@ -4,4 +4,4 @@ id: mission
 eyebrow: Our mission
 ---
 
-Making Dutch research global, open and resilient.
+Making the Dutch scholarly corpus global, open and resilient.
