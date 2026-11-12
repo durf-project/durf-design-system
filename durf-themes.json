@@ -1,0 +1,143 @@
+{
+  "version": "1.1.0",
+  "source": "DURF roadmap workbook; theme coordinators from the DURF full proposal, section 4.2 Team composition",
+  "project": {
+    "name": "Dutch Repository Federation",
+    "short": "DURF",
+    "start": "2026-06-01",
+    "end": "2030-05-31",
+    "manager": {
+      "name": "Maurice Vanderfeesten",
+      "institution": "VU Amsterdam"
+    },
+    "techLead": {
+      "name": "Cristina Huidiu",
+      "institution": "WUR"
+    }
+  },
+  "themes": [
+    {
+      "n": 1,
+      "name": "Governance of the Federation and Netherlands Research Portal",
+      "short": "Governance",
+      "colour": "#EE7628",
+      "token": "--durf-theme-1",
+      "lead": {
+        "name": "Alastair Dunning",
+        "institution": "TU Delft",
+        "contact": "Alastair Dunning, theme lead at TU Delft, with co-lead Maurice Vanderfeesten (VU Amsterdam)",
+        "coLead": {
+          "name": "Maurice Vanderfeesten",
+          "institution": "VU Amsterdam"
+        }
+      },
+      "partners": [
+        {
+          "name": "SURF",
+          "role": "community management, legal advice, project assistance"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "name": "Metadata Quality Improvement",
+      "short": "Metadata",
+      "colour": "#F6DA44",
+      "token": "--durf-theme-2",
+      "lead": {
+        "name": "Rutger de Jong",
+        "institution": "Leiden University",
+        "contact": "Rutger de Jong, theme lead at Leiden University"
+      },
+      "partners": [
+        {
+          "name": "WUR",
+          "role": "tech lead"
+        },
+        {
+          "name": "SURF",
+          "role": "community management, legal advice, project assistance, architect"
+        },
+        {
+          "name": "KB",
+          "role": "WISH"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "name": "Full Text Capture",
+      "short": "Fulltext",
+      "colour": "#177ABF",
+      "token": "--durf-theme-3",
+      "lead": {
+        "name": "Pascal Braak",
+        "institution": "University of Amsterdam",
+        "contact": "Pascal Braak, theme lead at the University of Amsterdam"
+      },
+      "partners": [
+        {
+          "name": "WUR",
+          "role": "tech lead"
+        },
+        {
+          "name": "SURF",
+          "role": "community management, legal advice, project assistance"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "name": "KB National Library e-Depot Archiving",
+      "short": "Archive",
+      "colour": "#17A95D",
+      "token": "--durf-theme-4",
+      "lead": {
+        "name": "Simone Kortekaas",
+        "institution": "KB National Library",
+        "contact": "Simone Kortekaas, theme lead at the KB National Library"
+      },
+      "partners": [
+        {
+          "name": "WUR",
+          "role": "tech lead"
+        },
+        {
+          "name": "SURF",
+          "role": "legal"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "name": "Metadata Distribution & Discovery Optimization",
+      "short": "Discovery",
+      "colour": "#5C1B61",
+      "token": "--durf-theme-5",
+      "lead": {
+        "name": "Rutger de Jong",
+        "institution": "Leiden University",
+        "contact": "Rutger de Jong, theme lead at Leiden University"
+      },
+      "partners": [
+        {
+          "name": "WUR",
+          "role": "tech lead"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "name": "NL Research Portal Update",
+      "short": "Portal",
+      "colour": "#83201B",
+      "token": "--durf-theme-6",
+      "lead": {
+        "name": "Naomi Wahls van Gils",
+        "institution": "TU Delft",
+        "contact": "Naomi Wahls van Gils, theme lead at TU Delft"
+      },
+      "partners": []
+    }
+  ]
+}

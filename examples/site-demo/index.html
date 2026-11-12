@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-accent="blue">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Site demo · DURF design system</title>
+<meta name="description" content="Every section layout of the DURF design system, rendered from Markdown files.">
+<meta property="og:title" content="Site demo · DURF design system">
+<meta property="og:image" content="https://durf-project.github.io/durf-design-system/assets/durf-og.png">
+<link rel="icon" type="image/svg+xml" href="https://durf-project.github.io/durf-design-system/assets/favicon.svg">
+<link rel="apple-touch-icon" href="https://durf-project.github.io/durf-design-system/assets/apple-touch-icon.png">
+
+<!-- DURF design system v1.1: Oat, tokens, site components; durf-nav.js without defer (no flash of the wrong theme). -->
+<link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/lib/oat.min.css">
+<link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/durf.css">
+<link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/durf-site.css">
+<script src="https://durf-project.github.io/durf-design-system/durf-nav.js"></script>
+<script src="https://durf-project.github.io/durf-design-system/lib/oat.min.js" defer></script>
+<script src="https://durf-project.github.io/durf-design-system/lib/marked.min.js" defer></script>
+<script src="https://durf-project.github.io/durf-design-system/durf-site.js" defer></script>
+</head>
+<body>
+
+<nav class="durf-subnav" aria-label="On this page">
+  <div class="durf-shell durf-subnav__inner" data-durf-section-nav></div>
+</nav>
+
+<main id="durf-sections">
+  <p class="durf-loading">Loading…</p>
+</main>
+
+<footer class="durf-footer durf-footer--site">
+  <div class="durf-colour-strip" aria-hidden="true"></div>
+  <div class="durf-shell durf-footer__inner">
+    <img class="durf-footer__logo" src="https://durf-project.github.io/durf-design-system/assets/durf-logo.svg" alt="DURF, Dutch Repository Federation">
+    <div class="durf-footer__text" id="durf-footer"></div>
+  </div>
+</footer>
+
+<noscript><div class="durf-shell"><p>This page needs JavaScript to render its content. The texts are also readable on GitHub in the <a href="https://github.com/durf-project/durf-design-system/tree/main/examples/site-demo/content">content folder</a>.</p></div></noscript>
+</body>
+</html>

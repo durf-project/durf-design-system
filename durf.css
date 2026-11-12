@@ -1,9 +1,10 @@
-/* DURF design system v1.0
+/* DURF design system v1.1
    Laag bovenop oat (https://oat.ink, @knadh/oat@1.0.0, MIT).
-   Laad eerst oat.min.css en daarna dit bestand. Alles hieronder is
-   ongelaagd en wint dus van de @layer-regels van oat. */
+   Laad eerst oat.min.css (meegeleverd in lib/, of de oude jsDelivr-URL) en
+   daarna dit bestand. Alles hieronder is ongelaagd en wint dus van de
+   @layer-regels van oat. Componenten voor markdown-sites staan in durf-site.css. */
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600;700&display=swap");
 
 /* ---------- 1. Tokens ---------- */
 :root {
@@ -16,11 +17,43 @@
   --durf-purple: #5C1B61;
   --durf-green: #17A95D;
   --durf-yellow: #F6DA44;
+  --durf-red: #83201B;
+
+  /* De zes DURF-thema's (bron: de roadmap). Vaste merkkleur per thema, plus:
+     -ink  leesbare tekstkleur op de paginakleur (licht en donker),
+     -tint zachte achtergrond in de themakleur,
+     -on   tekstkleur op een vlak in de volle themakleur. */
+  --durf-theme-1: #EE7628;  /* Governance */
+  --durf-theme-2: #F6DA44;  /* Metadata */
+  --durf-theme-3: #177ABF;  /* Fulltext */
+  --durf-theme-4: #17A95D;  /* Archive */
+  --durf-theme-5: #5C1B61;  /* Discovery */
+  --durf-theme-6: #83201B;  /* Portal */
+  --durf-theme-1-ink: light-dark(#B4530F, #F29A5E);
+  --durf-theme-2-ink: light-dark(#7A6100, #F6DA44);
+  --durf-theme-3-ink: light-dark(#146DAB, #5BB0EA);
+  --durf-theme-4-ink: light-dark(#0B7A40, #4CC585);
+  --durf-theme-5-ink: light-dark(#5C1B61, #D9A3DE);
+  --durf-theme-6-ink: light-dark(#83201B, #F0857D);
+  --durf-theme-1-tint: color-mix(in srgb, var(--durf-theme-1) 16%, var(--background));
+  --durf-theme-2-tint: color-mix(in srgb, var(--durf-theme-2) 22%, var(--background));
+  --durf-theme-3-tint: color-mix(in srgb, var(--durf-theme-3) 16%, var(--background));
+  --durf-theme-4-tint: color-mix(in srgb, var(--durf-theme-4) 16%, var(--background));
+  --durf-theme-5-tint: color-mix(in srgb, var(--durf-theme-5) 16%, var(--background));
+  --durf-theme-6-tint: color-mix(in srgb, var(--durf-theme-6) 16%, var(--background));
+  --durf-theme-1-on: #050E1D;
+  --durf-theme-2-on: #050E1D;
+  --durf-theme-3-on: #FFFFFF;
+  --durf-theme-4-on: #050E1D;
+  --durf-theme-5-on: #FFFFFF;
+  --durf-theme-6-on: #FFFFFF;
 
   /* Accent per thema: vaste waarde voor vlakken en tekst, met de tekstkleur erop.
      Standaard blauw. Overschrijf met <html data-accent="yellow"> enz. */
   --accent-solid: light-dark(#177ABF, #5BB0EA);
   --accent-on: light-dark(#FFFFFF, #04223A);
+  --accent-ink: var(--accent-solid);                 /* accent als tekstkleur */
+  --accent-tint: color-mix(in srgb, var(--accent-solid) 12%, var(--background));
 
   /* Oat-tokens, opnieuw ingekleurd */
   --background: light-dark(#FFFFFF, #0F1218);
@@ -63,17 +96,23 @@
   --topbar-h: 3.25rem;
   --reading-width: 46rem;
   --page-width: 80rem;
+  --durf-radius: .5rem;
+  --durf-radius-lg: 1rem;
+  --durf-shadow: 0 1px 2px rgb(5 14 29 / .06), 0 .5rem 1.5rem -.75rem rgb(5 14 29 / .25);
 }
 
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"]  { color-scheme: dark; }
 
-/* Accenten per DURF-thema. Kies er één per site of pagina. */
-:root[data-accent="blue"]   { --accent-solid: light-dark(#177ABF, #5BB0EA); --accent-on: light-dark(#FFFFFF, #04223A); }
-:root[data-accent="orange"] { --accent-solid: light-dark(#B85410, #F29A5E); --accent-on: light-dark(#FFFFFF, #2A1204); }
-:root[data-accent="purple"] { --accent-solid: light-dark(#5C1B61, #D9A3DE); --accent-on: light-dark(#FFFFFF, #2A0D2D); }
-:root[data-accent="green"]  { --accent-solid: light-dark(#0B7A40, #4CC585); --accent-on: light-dark(#FFFFFF, #04210F); }
-:root[data-accent="yellow"] { --accent-solid: light-dark(#8C6E00, #F6DA44); --accent-on: light-dark(#FFFFFF, #1A1600); }
+/* Accenten per DURF-thema. Kies er één per site of pagina: een kleurnaam of
+   het themanummer (theme-1 oranje, theme-2 geel, theme-3 blauw, theme-4 groen,
+   theme-5 paars, theme-6 rood). Tekst op de accentkleur houdt genoeg contrast. */
+:root:is([data-accent="blue"], [data-accent="theme-3"])   { --accent-solid: light-dark(#177ABF, #5BB0EA); --accent-on: light-dark(#FFFFFF, #04223A); }
+:root:is([data-accent="orange"], [data-accent="theme-1"]) { --accent-solid: light-dark(#B85410, #F29A5E); --accent-on: light-dark(#FFFFFF, #2A1204); }
+:root:is([data-accent="purple"], [data-accent="theme-5"]) { --accent-solid: light-dark(#5C1B61, #D9A3DE); --accent-on: light-dark(#FFFFFF, #2A0D2D); }
+:root:is([data-accent="green"], [data-accent="theme-4"])  { --accent-solid: light-dark(#0B7A40, #4CC585); --accent-on: light-dark(#FFFFFF, #04210F); }
+:root:is([data-accent="yellow"], [data-accent="theme-2"]) { --accent-solid: light-dark(#8C6E00, #F6DA44); --accent-on: light-dark(#FFFFFF, #1A1600); }
+:root:is([data-accent="red"], [data-accent="theme-6"])    { --accent-solid: light-dark(#83201B, #F0857D); --accent-on: light-dark(#FFFFFF, #2A0705); }
 
 /* ---------- 2. Basis ---------- */
 [hidden] { display: none !important; }
@@ -88,6 +127,10 @@ body {
 }
 h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.01em; }
 a { color: var(--link); }
+/* Oat kleurt a.button in een laag; de linkkleur hierboven zou die overschrijven. */
+a.button { text-decoration: none; }
+a.button:where(:not(.outline, .ghost, [data-variant])) { color: var(--primary-foreground); }
+a.button:where(.outline, .ghost) { color: var(--foreground); }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
@@ -195,6 +238,8 @@ body[data-sidebar-layout] #app-shell,
 .durf-kpi { background: var(--card); border: 1px solid var(--border); border-radius: .5rem; padding: .9rem 1.1rem; }
 .durf-kpi .value { font-family: var(--font-heading); font-weight: 800; font-size: 1.875rem; line-height: 1.1; color: var(--kpi-color, var(--foreground)); }
 .durf-kpi .label { margin-top: .25rem; font-size: .875rem; color: var(--muted-foreground); }
+.durf-kpi.is-unknown, .durf-kpi[data-unknown] { background: transparent; border-style: dashed; }
+.durf-kpi.is-unknown .value, .durf-kpi[data-unknown] .value { color: var(--muted-foreground); font-weight: 700; }
 .durf-kpi .check { margin-top: .25rem; font-family: ui-monospace, Consolas, monospace; font-size: .6875rem; color: var(--muted-foreground); overflow-wrap: anywhere; }
 
 .durf-callout {
@@ -207,13 +252,37 @@ body[data-sidebar-layout] #app-shell,
 .durf-callout[data-tone="warn"] { --callout-color: var(--chart-warn); }
 .durf-callout[data-tone="bad"]  { --callout-color: var(--chart-bad); }
 
+/* Themakleur op een element: data-theme-n="1" t/m "6" zet --theme-color (de
+   merkkleur), --theme-ink (tekst), --theme-tint (achtergrond) en --theme-on
+   (tekst op de volle kleur). Componenten lezen deze vier. */
+[data-theme-n="1"] { --theme-color: var(--durf-theme-1); --theme-ink: var(--durf-theme-1-ink); --theme-tint: var(--durf-theme-1-tint); --theme-on: var(--durf-theme-1-on); }
+[data-theme-n="2"] { --theme-color: var(--durf-theme-2); --theme-ink: var(--durf-theme-2-ink); --theme-tint: var(--durf-theme-2-tint); --theme-on: var(--durf-theme-2-on); }
+[data-theme-n="3"] { --theme-color: var(--durf-theme-3); --theme-ink: var(--durf-theme-3-ink); --theme-tint: var(--durf-theme-3-tint); --theme-on: var(--durf-theme-3-on); }
+[data-theme-n="4"] { --theme-color: var(--durf-theme-4); --theme-ink: var(--durf-theme-4-ink); --theme-tint: var(--durf-theme-4-tint); --theme-on: var(--durf-theme-4-on); }
+[data-theme-n="5"] { --theme-color: var(--durf-theme-5); --theme-ink: var(--durf-theme-5-ink); --theme-tint: var(--durf-theme-5-tint); --theme-on: var(--durf-theme-5-on); }
+[data-theme-n="6"] { --theme-color: var(--durf-theme-6); --theme-ink: var(--durf-theme-6-ink); --theme-tint: var(--durf-theme-6-tint); --theme-on: var(--durf-theme-6-on); }
+
 /* Themablok: kleurt mee met het DURF-thema */
 .durf-theme-block { border-left: 4px solid var(--theme-color, var(--accent-solid)); padding: .25rem 0 .25rem 1rem; margin: 0 0 1.25rem; }
-[data-theme-n="1"] { --theme-color: var(--durf-blue); }
-[data-theme-n="2"] { --theme-color: light-dark(#C9A800, #F6DA44); }
-[data-theme-n="3"] { --theme-color: var(--durf-orange); }
-[data-theme-n="4"] { --theme-color: var(--durf-purple); }
-[data-theme-n="5"] { --theme-color: var(--durf-green); }
+
+/* Themastip voor een kop of label, en een themalabel (chip) */
+.durf-theme-dot {
+  display: inline-block; width: .65em; height: .65em; margin-right: .45em; border-radius: 50%;
+  background: var(--theme-color, var(--accent-solid)); vertical-align: .05em; flex: 0 0 auto;
+}
+.durf-theme-chip {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .15rem .65rem; border-radius: 999px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .02em;
+  background: var(--theme-tint, var(--muted)); color: var(--theme-ink, var(--muted-foreground));
+}
+.durf-theme-chip::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--theme-color, currentColor); }
+.durf-tag[data-theme-n] { background: var(--theme-tint); color: var(--theme-ink); }
+
+/* Kleurstrook met de zes themakleuren, als merkaccent (bijvoorbeeld boven de voet) */
+.durf-colour-strip { display: flex; height: .375rem; }
+.durf-colour-strip::before { content: ""; flex: 1; background: linear-gradient(90deg,
+  var(--durf-theme-1) 0 16.667%, var(--durf-theme-2) 0 33.333%, var(--durf-theme-3) 0 50%,
+  var(--durf-theme-4) 0 66.667%, var(--durf-theme-5) 0 83.333%, var(--durf-theme-6) 0); }
 
 /* ---------- 8. Voet ---------- */
 .durf-footer { margin-top: 3rem; padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: .875rem; }

@@ -1,4 +1,5 @@
-/* DURF topbalk met sitemenu, thema-keuze en embed-gedrag.
+/* DURF design system v1.1: topbalk met sitemenu, thema-keuze, embed-gedrag,
+   feedbackknop en window.DURF (themakleuren, leads, partners, logo-URL's).
    Gebruik in <head>, zonder defer:  <script src=".../durf-nav.js"></script>
    Optioneel: <div id="durf-topbar"></div> bovenaan <body>; anders wordt de balk
    vooraan in <body> geplaatst. Het menu staat op één plek: SITES hieronder. */
@@ -6,7 +7,154 @@
   'use strict';
 
   var BASE = 'https://durf-project.github.io/';
-  var LOGO = BASE + 'project-page/assets/durf-favicon.png';
+  var DS = BASE + 'durf-design-system/';
+  var LOGO = DS + 'assets/favicon.svg';
+
+  // De zes thema's, gelijk aan durf-themes.json (bron: de DURF-roadmap).
+  // Pagina's lezen dit via window.DURF.themes in plaats van eigen kleurlijsten.
+  var DATA = {
+    "version": "1.1.0",
+    "source": "DURF roadmap workbook; theme coordinators from the DURF full proposal, section 4.2 Team composition",
+    "project": {
+      "name": "Dutch Repository Federation",
+      "short": "DURF",
+      "start": "2026-06-01",
+      "end": "2030-05-31",
+      "manager": {
+        "name": "Maurice Vanderfeesten",
+        "institution": "VU Amsterdam"
+      },
+      "techLead": {
+        "name": "Cristina Huidiu",
+        "institution": "WUR"
+      }
+    },
+    "themes": [
+      {
+        "n": 1,
+        "name": "Governance of the Federation and Netherlands Research Portal",
+        "short": "Governance",
+        "colour": "#EE7628",
+        "token": "--durf-theme-1",
+        "lead": {
+          "name": "Alastair Dunning",
+          "institution": "TU Delft",
+          "contact": "Alastair Dunning, theme lead at TU Delft, with co-lead Maurice Vanderfeesten (VU Amsterdam)",
+          "coLead": {
+            "name": "Maurice Vanderfeesten",
+            "institution": "VU Amsterdam"
+          }
+        },
+        "partners": [
+          {
+            "name": "SURF",
+            "role": "community management, legal advice, project assistance"
+          }
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Metadata Quality Improvement",
+        "short": "Metadata",
+        "colour": "#F6DA44",
+        "token": "--durf-theme-2",
+        "lead": {
+          "name": "Rutger de Jong",
+          "institution": "Leiden University",
+          "contact": "Rutger de Jong, theme lead at Leiden University"
+        },
+        "partners": [
+          {
+            "name": "WUR",
+            "role": "tech lead"
+          },
+          {
+            "name": "SURF",
+            "role": "community management, legal advice, project assistance, architect"
+          },
+          {
+            "name": "KB",
+            "role": "WISH"
+          }
+        ]
+      },
+      {
+        "n": 3,
+        "name": "Full Text Capture",
+        "short": "Fulltext",
+        "colour": "#177ABF",
+        "token": "--durf-theme-3",
+        "lead": {
+          "name": "Pascal Braak",
+          "institution": "University of Amsterdam",
+          "contact": "Pascal Braak, theme lead at the University of Amsterdam"
+        },
+        "partners": [
+          {
+            "name": "WUR",
+            "role": "tech lead"
+          },
+          {
+            "name": "SURF",
+            "role": "community management, legal advice, project assistance"
+          }
+        ]
+      },
+      {
+        "n": 4,
+        "name": "KB National Library e-Depot Archiving",
+        "short": "Archive",
+        "colour": "#17A95D",
+        "token": "--durf-theme-4",
+        "lead": {
+          "name": "Simone Kortekaas",
+          "institution": "KB National Library",
+          "contact": "Simone Kortekaas, theme lead at the KB National Library"
+        },
+        "partners": [
+          {
+            "name": "WUR",
+            "role": "tech lead"
+          },
+          {
+            "name": "SURF",
+            "role": "legal"
+          }
+        ]
+      },
+      {
+        "n": 5,
+        "name": "Metadata Distribution & Discovery Optimization",
+        "short": "Discovery",
+        "colour": "#5C1B61",
+        "token": "--durf-theme-5",
+        "lead": {
+          "name": "Rutger de Jong",
+          "institution": "Leiden University",
+          "contact": "Rutger de Jong, theme lead at Leiden University"
+        },
+        "partners": [
+          {
+            "name": "WUR",
+            "role": "tech lead"
+          }
+        ]
+      },
+      {
+        "n": 6,
+        "name": "NL Research Portal Update",
+        "short": "Portal",
+        "colour": "#83201B",
+        "token": "--durf-theme-6",
+        "lead": {
+          "name": "Naomi Wahls van Gils",
+          "institution": "TU Delft",
+          "contact": "Naomi Wahls van Gils, theme lead at TU Delft"
+        },
+        "partners": []
+      }
+    ]
+  };
 
   // Eén bron voor het menu. Pas hier aan, alle sites volgen na een nieuwe release.
   var SITES = [
@@ -22,6 +170,15 @@
 
   var root = document.documentElement;
   var KEY = 'durf-theme';
+
+  // Publieke API. Bestaat window.DURF al (een tweede kopie van dit script), dan vullen we aan.
+  var API = window.DURF = window.DURF || {};
+  API.version = DATA.version;
+  API.base = DS;
+  API.project = DATA.project;
+  API.themes = DATA.themes;
+  API.theme = function (n) { n = Number(n); return DATA.themes.filter(function (t) { return t.n === n; })[0] || null; };
+  API.assets = { logo: DS + 'assets/durf-logo.svg', mark: DS + 'assets/durf-mark.svg', favicon: DS + 'assets/favicon.svg', og: DS + 'assets/durf-og.png' };
   var SCRIPT = document.currentScript || {};
   var OPT = SCRIPT.dataset || {};   // data-topbar="off", data-durf-theme="N" op de script-tag
 
@@ -117,14 +274,9 @@
   var FEEDBACK_REPOS = ['project-page', 'position-paper', 'durf-gantt', 'durf-data-mesh-architecture', 'dashboards', 'durf-design-system'];
   // Wie de feedback leest en beantwoordt. Per thema (dashboards zetten data-durf-theme)
   // en per site. Pas namen hier aan, dan volgen alle pagina's.
-  var THEME_LEADS = {
-    1: { theme: 'Governance', lead: 'the theme lead at TU Delft' },
-    2: { theme: 'Metadata Quality Improvement', lead: 'Rutger, theme lead at Leiden University' },
-    3: { theme: 'Full Text Capture', lead: 'the theme lead at the University of Amsterdam' },
-    4: { theme: 'KB e-Depot Archiving', lead: 'the theme lead at the KB National Library' },
-    5: { theme: 'Distribution & Discovery', lead: 'the theme lead at Leiden University' },
-    6: { theme: 'NL Research Portal', lead: 'the theme lead at TU Delft' }
-  };
+  // Namen per thema komen uit DATA hierboven (lead.contact).
+  var THEME_LEADS = {};
+  DATA.themes.forEach(function (t) { THEME_LEADS[t.n] = { theme: t.name, lead: t.lead.contact }; });
   var SITE_CONTACTS = {
     'position-paper': 'the authors of the position paper',
     'durf-data-mesh-architecture': 'Maurice Vanderfeesten, author of this page',
@@ -239,7 +391,16 @@
     document.body.appendChild(host);
   }
 
+  // Favicon van het design system als de pagina er zelf geen heeft.
+  function favicon() {
+    if (document.querySelector('link[rel~="icon"]')) return;
+    var l = document.createElement('link');
+    l.rel = 'icon'; l.type = 'image/svg+xml'; l.href = LOGO;
+    document.head.appendChild(l);
+  }
+
   function start() {
+    favicon();
     if (OPT.topbar !== 'off') build();
     // Niet in embeds: daar is de pagina een onderdeel van een andere pagina.
     if (!root.hasAttribute('data-embed')) buildFeedback();

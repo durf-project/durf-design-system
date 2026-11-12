@@ -1,3 +1,5 @@
+> Historisch: dit was de opdracht voor versie 1.0. Voor de huidige afspraken, zie README.md en AGENTS.md.
+
 Je werkt in de repo durf-design-system van de GitHub-organisatie durf-project.
 
 1. Controleer dat de repo bestaat en main bevat (index.html, durf.css, durf-nav.js, README.md, LICENSE). Maak hem anders aan met `gh repo create durf-project/durf-design-system --public --source=. --push`.
