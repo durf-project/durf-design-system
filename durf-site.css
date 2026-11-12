@@ -1,0 +1,275 @@
+/* DURF design system v1.1: durf-site.css
+   Section components for landing pages: hero, key figures (stats), statement,
+   cards, features, timeline, media, band, prose, accordion, section nav and site
+   footer. Load after durf.css. durf-site.js renders Markdown into these classes,
+   but every class also works in hand-written HTML.
+   Colours only through tokens from durf.css, so light and dark both work.
+   Adapted from the PID2Portal landing page (surf-ori/pid2portal-project). */
+
+/* ---------- sections ---------- */
+.durf-section {
+  --section-color: var(--theme-color, var(--accent-solid));
+  --section-ink: var(--theme-ink, var(--accent-ink));
+  padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+.durf-section + .durf-section { border-top: 1px solid var(--border); }
+.durf-section[data-background="muted"] { background: var(--surface); }
+.durf-section[data-background="tint"] { background: var(--theme-tint, var(--accent-tint)); }
+.durf-section:is([data-background], .durf-layout-stats, .durf-layout-statement, .durf-layout-band) + .durf-section,
+.durf-section + .durf-section:is([data-background], .durf-layout-stats, .durf-layout-statement, .durf-layout-band) { border-top: 0; }
+@media (max-width: 40rem) { .durf-shell { padding-inline: 1rem; } }
+
+.durf-eyebrow {
+  margin: 0 0 .75rem;
+  font-size: .8125rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--section-ink, var(--accent-ink));
+}
+.durf-section-head { max-width: var(--reading-width); margin-bottom: clamp(1.75rem, 1rem + 2vw, 2.75rem); }
+.durf-section-head:last-child { margin-bottom: 0; }
+.durf-section-head h1, .durf-section-head h2 {
+  margin: 0 0 1rem; padding-left: 1rem; border-left: 5px solid var(--section-color, var(--accent-solid));
+  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); line-height: 1.15; text-wrap: balance;
+}
+.durf-section-head > p.durf-eyebrow { padding-left: calc(1rem + 5px); margin: 0 0 .75rem; font-size: .8125rem; line-height: 1.4; color: var(--section-ink, var(--accent-ink)); }
+.durf-section-head > p { color: var(--muted-foreground); font-size: 1.1875rem; line-height: 1.6; margin: 0 0 1rem; }
+.durf-section-head > p:last-child { margin-bottom: 0; }
+.durf-section-head > p strong { color: var(--foreground); }
+.durf-section-head ul, .durf-section-head ol { padding-left: 1.25rem; margin: 0 0 1rem; }
+.durf-section-head li { margin-bottom: .4rem; }
+.durf-section-head li::marker { color: var(--section-color, var(--accent-solid)); }
+.durf-section-head h3 { font-size: 1.25rem; margin: 1.75rem 0 .5rem; }
+
+/* ---------- buttons row (from a list of links) ---------- */
+.durf-actions { display: flex; flex-wrap: wrap; gap: .5rem .625rem; margin-top: auto; padding-top: 1rem; }
+.durf-actions .button {
+  white-space: normal; text-align: left; text-decoration: none;
+  padding: .625rem 1.125rem; font-size: .9375rem; font-weight: 700; border-radius: var(--durf-radius);
+}
+.durf-actions .button.outline { color: var(--foreground); border: 1px solid var(--input); background: transparent; }
+.durf-actions .button.outline:hover { border-color: var(--accent-solid); background: var(--accent-tint); }
+.durf-arrow { font-weight: 800; }
+
+/* ---------- hero ---------- */
+.durf-layout-hero { padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem); overflow: hidden; }
+.durf-hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 4.5rem); align-items: center; }
+.durf-hero--text-only { grid-template-columns: minmax(0, 1fr); max-width: 52rem; }
+.durf-hero__text h1 {
+  margin: 0 0 1.25rem; font-weight: 900; letter-spacing: -.02em; line-height: 1.04;
+  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+}
+.durf-hero__text h1 em { font-style: normal; color: var(--section-ink, var(--accent-ink)); }
+.durf-hero__text > p:not(.durf-eyebrow) { font-size: clamp(1.125rem, 1rem + .5vw, 1.3125rem); line-height: 1.55; color: var(--muted-foreground); max-width: 36em; margin: 0 0 1rem; }
+.durf-hero__text .durf-actions { padding-top: 1.25rem; }
+.durf-hero__text .durf-actions .button { padding: .8rem 1.4rem; font-size: 1rem; }
+.durf-hero__visual { position: relative; padding-bottom: 14%; }
+.durf-hero__visual .durf-frame--a { position: relative; z-index: 1; width: 90%; margin: 6% 0 0 5%; }
+.durf-hero__visual .durf-frame--b { position: absolute; z-index: 2; width: 60%; right: -2%; bottom: 0; }
+.durf-blk { position: absolute; z-index: 0; border-radius: var(--durf-radius-lg); background: var(--theme-color); }
+.durf-hero__visual .durf-blk:nth-child(1) { left: 0; top: 0; width: 42%; height: 40%; }
+.durf-hero__visual .durf-blk:nth-child(2) { right: 2%; top: -6%; width: 30%; height: 22%; }
+.durf-hero__visual .durf-blk:nth-child(3) { left: 10%; bottom: 2%; width: 34%; height: 22%; }
+.durf-hero__visual .durf-blk:nth-child(4) { right: -3%; bottom: 26%; width: 16%; height: 34%; }
+.durf-hero__visual--logo { padding: 0; display: grid; place-items: center; }
+.durf-hero__logo { width: min(100%, 28rem); height: auto; display: block; }
+@media (max-width: 56rem) {
+  .durf-hero { grid-template-columns: minmax(0, 1fr); }
+  .durf-hero__visual--logo { order: -1; justify-items: start; }
+  .durf-hero__visual--logo .durf-hero__logo { width: min(55%, 14rem); }
+}
+
+/* thick rounded frame around screenshots and video */
+.durf-frame { margin: 0; border: 3px solid var(--foreground); border-radius: var(--durf-radius-lg); overflow: hidden; background: var(--background); }
+.durf-frame img { display: block; width: 100%; height: auto; }
+
+/* ---------- stats: band with key figures ---------- */
+/* The band is always dark: its content uses the dark values of every token
+   (color-scheme: dark on the inner shell), so theme inks stay bright. */
+.durf-layout-stats {
+  background: light-dark(#050E1D, #1A1E26);
+  padding-block: clamp(2.25rem, 1.75rem + 2vw, 3.5rem);
+}
+.durf-layout-stats > .durf-shell {
+  color-scheme: dark;
+  --band-fg: #FFFFFF;
+  --band-muted: #C3C9D2;
+  color: var(--band-fg);
+}
+.durf-layout-stats .durf-section-head h2, .durf-layout-stats .durf-section-head h1 { color: var(--band-fg); border-left-color: var(--accent-solid); }
+.durf-layout-stats .durf-section-head > p { color: var(--band-muted); }
+.durf-layout-stats .durf-eyebrow { color: var(--band-muted); }
+.durf-stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: 1.5rem 1.75rem; }
+@media (max-width: 40rem) { .durf-stats { gap: 1.25rem 1rem; } }
+.durf-stat { display: flex; flex-direction: column; gap: .3rem; padding-left: 1rem; border-left: 4px solid var(--theme-ink, var(--accent-solid)); }
+.durf-stat__value { font-family: var(--font-heading); font-weight: 900; font-size: clamp(1.875rem, 1.4rem + 1.6vw, 2.75rem); line-height: 1.05; letter-spacing: -.01em; }
+.durf-stat__label { font-size: .9375rem; line-height: 1.45; color: var(--band-muted, var(--muted-foreground)); }
+.durf-stat__label a { color: inherit; }
+.durf-stat.is-unknown { border-left-style: dashed; }
+.durf-stat.is-unknown .durf-stat__value { font-size: clamp(1.375rem, 1.2rem + .8vw, 1.75rem); font-weight: 800; color: var(--band-muted, var(--muted-foreground)); padding-top: .4rem; }
+.durf-stat__note {
+  align-self: flex-start; margin-top: .15rem; padding: .05rem .55rem; border-radius: 999px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .02em;
+  border: 1px dashed currentColor; color: var(--band-muted, var(--muted-foreground));
+}
+.durf-stats__after { margin-top: 1.5rem; font-size: .875rem; color: var(--band-muted); }
+.durf-stats__after p { margin: 0; }
+.durf-stats__after a { color: inherit; }
+
+/* ---------- statement: one big sentence on a solid theme colour ---------- */
+.durf-layout-statement { background: var(--theme-color, var(--durf-theme-5)); color: var(--theme-on, #FFFFFF); padding-block: clamp(3rem, 2rem + 3vw, 4.5rem); }
+.durf-statement { max-width: 58rem; margin: 0 auto; text-align: center; }
+.durf-statement__label {
+  display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin: 0 0 1.25rem;
+  font-size: .8125rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+}
+.durf-statement__label::before, .durf-statement__label::after { content: ""; width: min(10rem, 18vw); height: 1px; background: currentColor; opacity: .7; }
+.durf-statement__text { margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem); line-height: 1.22; text-wrap: balance; }
+.durf-statement p:not(.durf-statement__text):not(.durf-statement__label) { margin: 1.25rem auto 0; max-width: 40rem; opacity: .9; }
+.durf-statement a { color: inherit; }
+
+/* ---------- cards ---------- */
+.durf-grid { --cols: 3; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 1.25rem; }
+@media (max-width: 65rem) { .durf-grid { --cols: 2 !important; } }
+@media (max-width: 42rem) { .durf-grid { --cols: 1 !important; } }
+.durf-card--site {
+  display: flex; flex-direction: column; padding: 0; overflow: hidden;
+  border-radius: var(--durf-radius-lg); background: var(--card);
+  transition: border-color .2s ease-out, box-shadow .2s ease-out;
+}
+.durf-card--site:hover { border-color: var(--theme-color, var(--accent-solid)); box-shadow: var(--durf-shadow); }
+.durf-card--site.has-theme { border-top: 6px solid var(--theme-color); }
+.durf-card__media { margin: 0; aspect-ratio: 16 / 9; overflow: hidden; background: var(--muted); border-bottom: 1px solid var(--border); }
+.durf-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+.durf-card__body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+.durf-card__body h3 { margin: 0 0 .6rem; font-size: 1.3125rem; line-height: 1.25; text-wrap: balance; }
+.durf-card__body > p, .durf-card__body > ul, .durf-card__body > ol { color: var(--muted-foreground); margin: 0 0 .9rem; }
+.durf-card__body > p strong { color: var(--foreground); }
+.durf-card__body ul, .durf-card__body ol { padding-left: 1.2rem; }
+.durf-card__body li { margin-bottom: .35rem; }
+.durf-card__body li::marker { color: var(--theme-color, var(--accent-solid)); }
+.durf-card__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem .75rem; margin-bottom: 1rem; min-height: 1.75rem; }
+.durf-card__number { font-family: var(--font-heading); font-weight: 900; font-size: 3rem; line-height: 1; color: var(--theme-ink, var(--accent-ink)); }
+.durf-card__date { font-size: .8125rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); }
+.durf-tags { display: flex; flex-wrap: wrap; gap: .3rem; justify-content: flex-end; margin-left: auto; }
+.durf-card__body .durf-actions .button { font-size: .875rem; padding: .5rem .9rem; }
+
+/* ---------- features: alternating image and text ---------- */
+.durf-feature { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(1.5rem, 1rem + 3vw, 4rem); align-items: center; }
+.durf-feature + .durf-feature { margin-top: clamp(2.5rem, 2rem + 3vw, 4.5rem); }
+.durf-feature--flip .durf-feature__media { order: 2; }
+.durf-feature--text { grid-template-columns: minmax(0, 1fr); max-width: var(--reading-width); }
+.durf-feature__media { box-shadow: var(--durf-shadow); }
+.durf-feature__text h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); line-height: 1.15; margin: .75rem 0 1rem; }
+.durf-feature__text p { color: var(--muted-foreground); font-size: 1.125rem; }
+.durf-feature__text p strong { color: var(--foreground); }
+.durf-feature__text .durf-tags { justify-content: flex-start; margin: 0; }
+@media (max-width: 56rem) {
+  .durf-feature { grid-template-columns: minmax(0, 1fr); }
+  .durf-feature--flip .durf-feature__media { order: 0; }
+}
+
+/* ---------- timeline: a line with coloured date pills ---------- */
+.durf-timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); position: relative; }
+.durf-timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 1.15rem; height: 2px; background: var(--border); }
+.durf-timeline__item { position: relative; text-align: center; padding: 0 .5rem; }
+.durf-timeline__pill {
+  display: inline-block; position: relative; padding: .7rem .8rem; border-radius: var(--durf-radius);
+  font-family: var(--font-heading); font-weight: 800; font-size: .9375rem; line-height: 1; white-space: nowrap;
+  background: var(--theme-color, var(--accent-solid)); color: var(--theme-on, var(--accent-on));
+}
+.durf-timeline__text { display: block; margin-top: .85rem; font-size: .9375rem; line-height: 1.45; color: var(--muted-foreground); }
+@media (max-width: 56rem) {
+  .durf-timeline { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .durf-timeline::before { left: 3.25rem; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+  .durf-timeline__item { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: 1rem; text-align: left; padding: 0; }
+  .durf-timeline__pill { justify-self: center; }
+  .durf-timeline__text { margin: 0; }
+}
+
+/* ---------- media: text next to a video ---------- */
+.durf-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: clamp(1.5rem, 1rem + 3vw, 4rem); align-items: center; }
+.durf-media .durf-section-head { margin-bottom: 0; }
+.durf-media__side { display: grid; gap: 1rem; }
+.durf-media__side .durf-frame { box-shadow: var(--durf-shadow); }
+.durf-video { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.durf-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 56rem) { .durf-media { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- band: call to action in the section or site accent ---------- */
+.durf-band {
+  --band-fill: var(--theme-color, var(--accent-solid));
+  --band-on: var(--theme-on, var(--accent-on));
+  background: var(--band-fill); color: var(--band-on);
+  border-radius: calc(var(--durf-radius-lg) * 1.5); padding: clamp(1.75rem, 1rem + 4vw, 3.5rem);
+}
+.durf-band .durf-section-head { max-width: 52rem; margin: 0; }
+.durf-band .durf-section-head h2, .durf-band .durf-section-head h1 { color: inherit; border-left-color: currentColor; }
+.durf-band .durf-eyebrow, .durf-band .durf-section-head > p, .durf-band .durf-section-head > p strong { color: inherit; }
+.durf-band a:not(.button) { color: inherit; }
+.durf-band .durf-actions .button { background: var(--band-on); color: var(--band-fill); border: 2px solid var(--band-on); }
+.durf-band .durf-actions .button:hover { filter: brightness(1.1); }
+.durf-band .durf-actions .button.outline { background: transparent; color: var(--band-on); border: 2px solid var(--band-on); }
+.durf-band .durf-actions .button.outline:hover { background: color-mix(in srgb, var(--band-on) 12%, transparent); }
+
+/* ---------- prose in a site section ---------- */
+.durf-site-prose { max-width: var(--reading-width); }
+.durf-site-prose .durf-section-head { max-width: none; }
+.durf-site-prose .durf-section-head > p:not(.durf-eyebrow) { color: var(--foreground); font-size: 1.0625rem; }
+.durf-site-prose blockquote {
+  margin: 1.25rem 0; padding: 1rem 1.25rem; border-left: 5px solid var(--section-color, var(--accent-solid));
+  background: var(--theme-tint, var(--accent-tint)); border-radius: 0 var(--durf-radius) var(--durf-radius) 0; color: var(--foreground);
+}
+.durf-site-prose blockquote p { margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); line-height: 1.35; font-style: normal; }
+.durf-site-prose blockquote { font-style: normal; }
+
+/* ---------- accordion: every item collapsed ---------- */
+.durf-accordion { max-width: var(--reading-width); }
+.durf-accordion details { background: var(--card); }
+.durf-accordion details:first-child { border-top-left-radius: var(--durf-radius); border-top-right-radius: var(--durf-radius); }
+.durf-accordion details:last-child { border-bottom-left-radius: var(--durf-radius); border-bottom-right-radius: var(--durf-radius); }
+.durf-accordion details[data-theme-n] { border-left: 4px solid var(--theme-color); }
+.durf-accordion summary { font-family: var(--font-heading); font-weight: 800; font-size: 1.0625rem; line-height: 1.3; padding: 1rem 1.25rem; gap: .75rem; }
+.durf-accordion summary::after { flex: 0 0 auto; }
+.durf-accordion__title { flex: 1 1 auto; min-width: 0; text-align: left; }
+.durf-accordion__date { margin-left: auto; font-family: var(--font-sans); font-size: .8125rem; font-weight: 600; color: var(--muted-foreground); white-space: nowrap; }
+.durf-accordion details > .durf-accordion__body { margin: 0; padding: 1rem 1.25rem .25rem; }
+.durf-accordion__body > * { margin: 0 0 1rem; }
+.durf-accordion__body ul, .durf-accordion__body ol { padding-left: 1.25rem; }
+.durf-accordion__body li::marker { color: var(--section-color, var(--accent-solid)); }
+
+/* ---------- section nav: sticky strip under the topbar ---------- */
+.durf-subnav {
+  position: sticky; top: var(--topbar-h); z-index: 50;
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+  backdrop-filter: saturate(1.4) blur(8px); -webkit-backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.durf-subnav__inner, .durf-subnav[data-durf-section-nav] > .durf-shell {
+  display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; padding-block: .4rem;
+}
+.durf-subnav ::-webkit-scrollbar { display: none; }
+.durf-subnav a {
+  flex: 0 0 auto; padding: .35rem .75rem; border-radius: 999px; white-space: nowrap;
+  font-size: .875rem; font-weight: 600; color: var(--muted-foreground); text-decoration: none;
+}
+.durf-subnav a:hover { color: var(--foreground); background: var(--muted); }
+.durf-subnav a[aria-current] { color: var(--accent-ink); background: var(--accent-tint); }
+html[data-embed] .durf-subnav { top: 0; }
+html { scroll-padding-top: calc(var(--topbar-h) + 3.5rem); }
+
+/* ---------- site footer ---------- */
+.durf-footer.durf-footer--site { margin-top: 0; padding: 0; border-top: 0; background: var(--surface); color: var(--muted-foreground); font-size: .9375rem; }
+.durf-footer--site > .durf-colour-strip { height: .375rem; }
+.durf-footer__inner { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2rem; align-items: start; padding-block: 2.5rem 3rem; }
+.durf-footer__logo { width: 6.5rem; height: auto; display: block; }
+.durf-footer__text { max-width: var(--reading-width); }
+.durf-footer__text p { margin: 0 0 .75rem; }
+.durf-footer__text strong { color: var(--foreground); }
+@media (max-width: 40rem) { .durf-footer__inner { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } .durf-footer__logo { width: 5rem; } }
+
+.durf-loading { padding: 4rem 1.5rem; text-align: center; color: var(--muted-foreground); }
+
+@media (prefers-reduced-motion: reduce) { .durf-card--site { transition: none; } }
+@media print {
+  .durf-subnav { display: none; }
+  .durf-layout-stats, .durf-layout-statement, .durf-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

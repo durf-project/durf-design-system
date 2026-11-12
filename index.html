@@ -5,21 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>DURF design system</title>
-<link rel="icon" type="image/png" href="https://durf-project.github.io/project-page/assets/durf-favicon.png">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@knadh/oat@1.0.0/oat.min.css">
+<meta name="description" content="Het DURF design system: tokens, logo, themakleuren, topbalk en componenten voor alle DURF-sites.">
+<meta property="og:title" content="DURF design system">
+<meta property="og:image" content="https://durf-project.github.io/durf-design-system/assets/durf-og.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="lib/oat.min.css">
 <link rel="stylesheet" href="durf.css">
+<link rel="stylesheet" href="durf-site.css">
 <script src="durf-nav.js"></script>
+<script src="lib/oat.min.js" defer></script>
 <style>
   .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: .75rem; margin: 0 0 1.5rem; }
   .sw { border: 1px solid var(--border); border-radius: .5rem; overflow: hidden; background: var(--card); font-size: .8125rem; }
   .sw i { display: block; height: 3.25rem; }
   .sw b { display: block; padding: .5rem .6rem 0; font-weight: 700; }
-  .sw span { display: block; padding: 0 .6rem .5rem; color: var(--muted-foreground); font-family: ui-monospace, Consolas, monospace; font-size: .75rem; }
+  .sw span { display: block; padding: 0 .6rem .5rem; color: var(--muted-foreground); font-family: ui-monospace, Consolas, monospace; font-size: .75rem; overflow-wrap: anywhere; }
+  .themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .75rem; margin: 0 0 1.5rem; }
+  .th { border: 1px solid var(--border); border-radius: .5rem; overflow: hidden; background: var(--card); font-size: .875rem; }
+  .th .fill { padding: .75rem .9rem; background: var(--theme-color); color: var(--theme-on); font-family: var(--font-heading); font-weight: 800; }
+  .th .ink { padding: .6rem .9rem 0; color: var(--theme-ink); font-weight: 700; }
+  .th .tint { margin: .6rem .9rem; padding: .4rem .6rem; border-radius: .375rem; background: var(--theme-tint); color: var(--theme-ink); font-size: .8125rem; }
+  .th .meta { padding: 0 .9rem .75rem; color: var(--muted-foreground); font-size: .8125rem; }
+  .th code { font-size: .75rem; }
   .row-demo { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin: 0 0 1.25rem; }
   .kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .75rem; margin-bottom: 1.5rem; }
   pre { margin: 0 0 1.25rem; padding: 1rem; overflow-x: auto; background: var(--muted); border-radius: .5rem; font-size: .8125rem; line-height: 1.5; }
   .scroll-x { overflow-x: auto; margin-bottom: 1.5rem; }
   .type-demo p { margin: 0 0 .5rem; }
+  .logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 1rem; margin: 0 0 1.5rem; }
+  .logos figure { margin: 0; padding: 1rem; border: 1px solid var(--border); border-radius: .5rem; background: var(--card); text-align: center; }
+  .logos img { width: 100%; max-width: 9rem; height: auto; aspect-ratio: 1; object-fit: contain; display: block; margin: 0 auto .5rem; }
+  .logos figure.wide img { aspect-ratio: auto; max-width: 100%; }
+  .logos figcaption { font-size: .8125rem; color: var(--muted-foreground); }
+  .demo-frame { margin: 0 0 1.5rem; border: 1px dashed var(--input); border-radius: .5rem; overflow: hidden; }
+  .demo-frame > .durf-section { padding-block: 1.75rem; }
 </style>
 </head>
 <body>
@@ -27,42 +48,74 @@
 <header class="durf-page-head">
   <div class="durf-shell">
     <div class="durf-page-head__inner">
-      <img class="durf-page-head__logo" src="https://durf-project.github.io/project-page/assets/durf-logo.svg" alt="Dutch Repository Federation">
+      <img class="durf-page-head__logo" src="assets/durf-logo.svg" alt="Dutch Repository Federation">
       <div class="durf-page-head__text">
-        <h1>DURF design system <span class="durf-tag" data-tone="draft">Versie 1.0</span></h1>
-        <p class="byline">Een laag bovenop oat, gebaseerd op de position paper en de dashboards.</p>
+        <h1>DURF design system <span class="durf-tag" data-tone="draft">Versie 1.1</span></h1>
+        <p class="byline">Een laag bovenop oat, voor alle DURF-sites: tokens, logo, themakleuren, topbalk en componenten.</p>
         <div class="links">
-          <a href="#kleur">Kleur</a><a href="#type">Typografie</a><a href="#componenten">Componenten</a><a href="#gebruik">Gebruik</a>
+          <a href="#gebruik">Gebruik</a><a href="#logo">Logo</a><a href="#kleur">Kleur</a><a href="#type">Typografie</a><a href="#componenten">Componenten</a><a href="#site">Markdown-sites</a><a href="examples/site-demo/">Voorbeeldsite</a>
         </div>
       </div>
     </div>
   </div>
 </header>
+<div class="durf-colour-strip" aria-hidden="true"></div>
 
 <main class="durf-shell">
 <div class="durf-prose" style="max-width:none">
 
+<h1 id="gebruik">Gebruik</h1>
+<p>Zet dit in de head van elke pagina, in deze volgorde. Alles komt van de site van het design system zelf, ook oat. Laad <code>durf-nav.js</code> zonder defer, dan wordt het thema gezet voordat er iets getekend is.</p>
+<pre>&lt;link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/lib/oat.min.css"&gt;
+&lt;link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/durf.css"&gt;
+&lt;script src="https://durf-project.github.io/durf-design-system/durf-nav.js"&gt;&lt;/script&gt;
+&lt;script src="https://durf-project.github.io/durf-design-system/lib/oat.min.js" defer&gt;&lt;/script&gt;</pre>
+<p>Voor een pagina die uit Markdown-bestanden wordt opgebouwd komen er twee regels bij (zie <a href="#site">Markdown-sites</a>):</p>
+<pre>&lt;link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/durf-site.css"&gt;
+&lt;script src="https://durf-project.github.io/durf-design-system/durf-site.js" defer&gt;&lt;/script&gt;</pre>
+<p>Pagina's die oat nog van jsDelivr laden (<code>cdn.jsdelivr.net/npm/@knadh/oat@1.0.0/oat.min.css</code>) blijven werken: het is precies hetzelfde bestand. Optioneel kies je een accent per site met <code>&lt;html data-accent="theme-2"&gt;</code>.</p>
+
+<h1 id="logo">Logo</h1>
+<p>Het logo is volledig vector, zonder rasterbeelden erin. Het beeldmerk bestaat uit vijf puzzelstukken; het ronde logo zet de ringtekst eromheen, als lijnen (Nunito ExtraBold), zodat het overal hetzelfde oogt. Gebruik de bestanden rechtstreeks van deze site.</p>
+<div class="logos">
+  <figure><img src="assets/durf-logo.svg" alt="Het ronde DURF-logo"><figcaption><code>assets/durf-logo.svg</code><br>rond logo met ringtekst</figcaption></figure>
+  <figure><img src="assets/durf-mark.svg" alt="Het DURF-beeldmerk"><figcaption><code>assets/durf-mark.svg</code><br>beeldmerk, origineel (met C2PA)</figcaption></figure>
+  <figure><img src="assets/favicon.svg" alt="Favicon"><figcaption><code>assets/favicon.svg</code><br>vierkant, ook in de topbalk</figcaption></figure>
+  <figure><img src="assets/apple-touch-icon.png" alt="App-icoon"><figcaption><code>favicon-32.png</code>, <code>apple-touch-icon.png</code>, <code>durf-mark-512.png</code></figcaption></figure>
+  <figure class="wide"><img src="assets/durf-og.png" alt="Deelafbeelding met logo en naam"><figcaption><code>assets/durf-og.png</code><br>1200 × 630, voor og:image</figcaption></figure>
+</div>
+<pre>&lt;link rel="icon" type="image/svg+xml" href="https://durf-project.github.io/durf-design-system/assets/favicon.svg"&gt;
+&lt;link rel="apple-touch-icon" href="https://durf-project.github.io/durf-design-system/assets/apple-touch-icon.png"&gt;
+&lt;meta property="og:image" content="https://durf-project.github.io/durf-design-system/assets/durf-og.png"&gt;</pre>
+<p>Heeft een pagina zelf geen favicon, dan zet <code>durf-nav.js</code> die van het design system.</p>
+
 <h1 id="kleur">Kleur</h1>
-<p>Het merkpalet komt uit de position paper. Oat-tokens als <code>--primary</code>, <code>--border</code> en <code>--card</code> zijn opnieuw ingekleurd, zodat alle oat-componenten het DURF-palet volgen en licht en donker automatisch werken via <code>light-dark()</code>.</p>
+<p>Oat-tokens als <code>--primary</code>, <code>--border</code> en <code>--card</code> zijn opnieuw ingekleurd, zodat alle oat-componenten het DURF-palet volgen en licht en donker automatisch werken via <code>light-dark()</code>. Gebruik in pagina's alleen tokens, nooit losse hex-waarden.</p>
+
+<h2 id="themas">De zes themakleuren</h2>
+<p>De kleuren komen uit de DURF-roadmap. Per thema zijn er vier tokens: de merkkleur <code>--durf-theme-N</code>, een leesbare tekstkleur <code>-ink</code>, een zachte achtergrond <code>-tint</code> en de tekstkleur op een vol vlak <code>-on</code>. Met <code>data-theme-n="N"</code> op een element krijg je ze als <code>--theme-color</code>, <code>--theme-ink</code>, <code>--theme-tint</code> en <code>--theme-on</code>. Namen, leads en partners staan in <a href="durf-themes.json"><code>durf-themes.json</code></a> en in <code>window.DURF.themes</code>; deze kaarten worden daaruit opgebouwd.</p>
+<div class="themes" id="theme-cards"></div>
 
 <h2>Merkkleuren</h2>
 <div class="swatches">
-  <div class="sw"><i style="background:#050E1D"></i><b>Zwart</b><span>#050E1D</span></div>
-  <div class="sw"><i style="background:#177ABF"></i><b>DURF-blauw</b><span>#177ABF</span></div>
-  <div class="sw"><i style="background:#EE7628"></i><b>Oranje</b><span>#EE7628</span></div>
-  <div class="sw"><i style="background:#5C1B61"></i><b>Paars</b><span>#5C1B61</span></div>
-  <div class="sw"><i style="background:#17A95D"></i><b>Groen</b><span>#17A95D</span></div>
-  <div class="sw"><i style="background:#F6DA44"></i><b>Geel</b><span>#F6DA44</span></div>
+  <div class="sw"><i style="background:var(--durf-black)"></i><b>Zwart</b><span>--durf-black #050E1D</span></div>
+  <div class="sw"><i style="background:var(--durf-blue)"></i><b>Blauw</b><span>--durf-blue #177ABF</span></div>
+  <div class="sw"><i style="background:var(--durf-orange)"></i><b>Oranje</b><span>--durf-orange #EE7628</span></div>
+  <div class="sw"><i style="background:var(--durf-purple)"></i><b>Paars</b><span>--durf-purple #5C1B61</span></div>
+  <div class="sw"><i style="background:var(--durf-green)"></i><b>Groen</b><span>--durf-green #17A95D</span></div>
+  <div class="sw"><i style="background:var(--durf-yellow)"></i><b>Geel</b><span>--durf-yellow #F6DA44</span></div>
+  <div class="sw"><i style="background:var(--durf-red)"></i><b>Rood</b><span>--durf-red #83201B</span></div>
 </div>
 
 <h2>Accent per site of thema</h2>
-<p>Zet <code>data-accent</code> op het html-element. Elke waarde is zo gekozen dat tekst op de accentkleur voldoende contrast houdt, ook het gele thema 2 (daarvoor is in licht de donkere oker gekozen, zoals nu al in het metadata-dashboard).</p>
+<p>Zet <code>data-accent</code> op het html-element: een kleurnaam (<code>blue</code>, <code>orange</code>, <code>yellow</code>, <code>green</code>, <code>purple</code>, <code>red</code>) of een themanummer (<code>theme-1</code> tot en met <code>theme-6</code>). Tekst op de accentkleur houdt voldoende contrast, ook bij geel (in licht de donkere oker). Probeer het hier:</p>
 <div class="row-demo" id="accent-demo">
-  <button data-set="blue">blue</button>
-  <button data-set="orange">orange</button>
-  <button data-set="purple">purple</button>
-  <button data-set="green">green</button>
-  <button data-set="yellow">yellow</button>
+  <button data-set="theme-1">theme-1 oranje</button>
+  <button data-set="theme-2">theme-2 geel</button>
+  <button data-set="theme-3">theme-3 blauw</button>
+  <button data-set="theme-4">theme-4 groen</button>
+  <button data-set="theme-5">theme-5 paars</button>
+  <button data-set="theme-6">theme-6 rood</button>
 </div>
 
 <h2>Status en data</h2>
@@ -74,7 +127,7 @@
 </div>
 
 <h1 id="type">Typografie</h1>
-<p>Nunito (800) voor koppen en kerncijfers, Source Sans 3 voor lopende tekst. Leesbreedte maximaal 46rem.</p>
+<p>Nunito (800 en 900) voor koppen en kerncijfers, Source Sans 3 voor lopende tekst. Leesbreedte maximaal 46rem (<code>--reading-width</code>).</p>
 <div class="type-demo">
   <h1 style="margin-top:0;padding-top:0;border-top:0">Kop 1, Nunito 800</h1>
   <h2>Kop 2, Nunito 800</h2>
@@ -88,26 +141,31 @@
 <div class="row-demo">
   <button>Primair</button>
   <button class="outline">Secundair</button>
+  <a class="button" href="#componenten">Link als knop</a>
   <button data-variant="danger">Gevaar</button>
   <span class="durf-tag">Standaard</span>
   <span class="durf-tag" data-tone="draft">Concept</span>
   <span class="durf-tag" data-tone="good">Gereed</span>
   <span class="durf-tag" data-tone="warn">Let op</span>
   <span class="durf-tag" data-tone="bad">Fout</span>
+  <span class="durf-tag" data-theme-n="4">Thema 4</span>
+  <span class="durf-theme-chip" data-theme-n="2">Theme 2 · Metadata</span>
 </div>
 
 <h2>Kerncijfers</h2>
+<p>Een waarde die nog niet bekend is, toon je als onbekend met <code>class="durf-kpi is-unknown"</code>: gedempt en met een stippellijn, zodat niemand het voor een meting aanziet.</p>
 <div class="kpis">
-  <div class="durf-kpi" style="--kpi-color:var(--chart-good)"><div class="value">52%</div><div class="label">Publicaties met DOI</div><div class="check">2,4 M records, 18 instellingen</div></div>
+  <div class="durf-kpi" style="--kpi-color:var(--chart-good)"><div class="value">52%</div><div class="label">Publicaties met DOI</div><div class="check">voorbeeldwaarde</div></div>
   <div class="durf-kpi" style="--kpi-color:var(--chart-warn)"><div class="value">37%</div><div class="label">Met Handle</div></div>
-  <div class="durf-kpi" style="--kpi-color:var(--chart-bad)"><div class="value">0</div><div class="label">Met URN:NBN</div></div>
+  <div class="durf-kpi is-unknown"><div class="value">Onbekend</div><div class="label">Met URN:NBN</div><div class="check">nog niet gemeten</div></div>
 </div>
 
 <h2>Callout en themablok</h2>
 <div class="durf-callout"><p><strong>Proof of concept.</strong> De tabbladen Personen en Organisaties tonen nepdata.</p></div>
 <div class="durf-callout" data-tone="warn"><p>Plain-http endpoints zijn niet bereikbaar vanuit de controle-omgeving.</p></div>
-<div class="durf-theme-block" data-theme-n="2"><strong>Thema 2.</strong> Verbetering van de metadatakwaliteit.</div>
+<div class="durf-theme-block" data-theme-n="2"><strong>Thema 2.</strong> Metadata Quality Improvement.</div>
 <div class="durf-theme-block" data-theme-n="4"><strong>Thema 4.</strong> Blokken kleuren mee met hun DURF-thema.</div>
+<h3><span class="durf-theme-dot" data-theme-n="3"></span>3. Een kop met themastip</h3>
 
 <h2>Tabel</h2>
 <div class="scroll-x">
@@ -121,25 +179,86 @@
 </table>
 </div>
 
-<h1 id="gebruik">Gebruik in een andere repo</h1>
-<p>Vier regels in de head en de site heeft het DURF-uiterlijk plus de topbalk met menu. Het menu staat op één plek, in <code>durf-nav.js</code>.</p>
-<pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@knadh/oat@1.0.0/oat.min.css"&gt;
-&lt;link rel="stylesheet" href="https://durf-project.github.io/durf-design-system/durf.css"&gt;
-&lt;script src="https://durf-project.github.io/durf-design-system/durf-nav.js"&gt;&lt;/script&gt;
-&lt;html lang="nl" data-accent="yellow"&gt;   &lt;!-- optioneel: accent per site --&gt;</pre>
-<p>Voor een dashboard met oat's sidebar-layout trekt <code>durf.css</code> de hoogte van de topbalk af van <code>#app-shell</code>, zodat de losse back-bar kan vervallen.</p>
+<h2>Sectiecomponenten (durf-site.css)</h2>
+<p>Deze klassen werken met de hand in HTML en worden ook door <code>durf-site.js</code> gemaakt. Een paar voorbeelden, op ware grootte in de <a href="examples/site-demo/">voorbeeldsite</a>.</p>
+
+<div class="demo-frame">
+<section class="durf-section durf-layout-stats"><div class="durf-shell"><ul class="durf-stats">
+  <li class="durf-stat" data-theme-n="1"><span class="durf-stat__value">6</span><span class="durf-stat__label">thema's</span></li>
+  <li class="durf-stat" data-theme-n="2"><span class="durf-stat__value">4 jaar</span><span class="durf-stat__label">1 juni 2026 tot 31 mei 2030</span></li>
+  <li class="durf-stat is-unknown" data-theme-n="3"><span class="durf-stat__value">Unknown</span><span class="durf-stat__label">deelnemende repositories</span><span class="durf-stat__note">Not yet measured</span></li>
+</ul></div></section>
+</div>
+
+<div class="demo-frame">
+<section class="durf-section durf-layout-timeline"><div class="durf-shell"><ol class="durf-timeline" style="--n:3">
+  <li class="durf-timeline__item" data-theme-n="1"><span class="durf-timeline__pill">Jun 2026</span><span class="durf-timeline__text">Start van het project</span></li>
+  <li class="durf-timeline__item" data-theme-n="3"><span class="durf-timeline__pill">2026–2030</span><span class="durf-timeline__text">Zes thema's werken samen</span></li>
+  <li class="durf-timeline__item" data-theme-n="4"><span class="durf-timeline__pill">May 2030</span><span class="durf-timeline__text">Einde van het project</span></li>
+</ol></div></section>
+</div>
+
+<div class="demo-frame">
+<section class="durf-section durf-layout-band"><div class="durf-shell"><div class="durf-band" data-theme-n="5"><div class="durf-section-head">
+  <p class="durf-eyebrow">Band</p><h2>Een oproep in een themakleur</h2><p>Zonder <code>data-theme-n</code> neemt de band het accent van de site.</p>
+  <div class="durf-actions"><a class="button" href="#site">Hoofdknop <span class="durf-arrow">→</span></a><a class="button outline" href="#gebruik">Tweede knop <span class="durf-arrow">→</span></a></div>
+</div></div></div></section>
+</div>
+
+<h1 id="site">Markdown-sites</h1>
+<p><code>durf-site.js</code> bouwt een pagina op uit Markdown-bestanden met front matter, zoals de PID2Portal-pagina. Het leest <code>content/sections.json</code> en de bestanden in <code>content/</code>, relatief aan de pagina. Elke sectie kiest een layout: <code>hero</code>, <code>stats</code>, <code>statement</code>, <code>cards</code>, <code>features</code>, <code>timeline</code>, <code>media</code>, <code>band</code>, <code>prose</code> of <code>accordion</code>. De afspraken staan in de README; de <a href="examples/site-demo/">voorbeeldsite</a> laat ze allemaal zien.</p>
+<pre>---
+layout: cards        # hero | stats | statement | cards | features | timeline | media | band | prose | accordion
+id: themes           # anker, voor #themes
+nav: Themes          # label in de sectienavigatie (weglaten = niet tonen)
+eyebrow: Six themes  # klein label boven de kop
+theme: 3             # optioneel: sectie in themakleur 3
+---
+
+## One project, six themes
+
+### Full Text Capture
+
+theme: 3
+tags: Draft
+
+Led by the University of Amsterdam.</pre>
+
+<h2>JavaScript</h2>
+<p><code>durf-nav.js</code> zet <code>window.DURF</code> met <code>version</code>, <code>project</code>, <code>themes</code> (nummer, naam, korte naam, kleur, token, lead, partners), <code>theme(n)</code> en <code>assets</code> (URL's van logo, beeldmerk, favicon en deelafbeelding). Dezelfde gegevens staan in <code>durf-themes.json</code>.</p>
+<pre>var t = DURF.theme(2);   // { n: 2, name: "Metadata Quality Improvement", short: "Metadata", colour: "#F6DA44", ... }
+el.setAttribute('data-theme-n', t.n);   // kleur via tokens, niet via t.colour</pre>
 
 </div>
 </main>
 
-<footer class="durf-footer">
-  <div class="durf-shell">Gepubliceerd door de <a href="https://github.com/durf-project">Dutch Repository Federation</a>. Gebaseerd op <a href="https://oat.ink">oat</a> (MIT).</div>
+<footer class="durf-footer durf-footer--site">
+  <div class="durf-colour-strip" aria-hidden="true"></div>
+  <div class="durf-shell durf-footer__inner">
+    <img class="durf-footer__logo" src="assets/durf-logo.svg" alt="DURF, Dutch Repository Federation">
+    <div class="durf-footer__text"><p>Gepubliceerd door de <a href="https://github.com/durf-project">Dutch Repository Federation</a>, onder de <a href="https://github.com/durf-project/durf-design-system/blob/main/LICENSE">EUPL 1.2</a>. Gebaseerd op <a href="https://oat.ink">oat</a> (MIT, meegeleverd in <code>lib/</code>) en <a href="https://marked.js.org">marked</a> (MIT). Componenten voor Markdown-sites naar het voorbeeld van de PID2Portal-pagina van SURF.</p></div>
+  </div>
 </footer>
 
 <script>
   document.querySelectorAll('#accent-demo [data-set]').forEach(function (b) {
     b.addEventListener('click', function () { document.documentElement.setAttribute('data-accent', b.dataset.set); });
   });
+  (function () {
+    var box = document.getElementById('theme-cards');
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    (window.DURF && DURF.themes || []).forEach(function (t) {
+      var d = document.createElement('div');
+      d.className = 'th';
+      d.setAttribute('data-theme-n', t.n);
+      d.innerHTML = '<div class="fill">' + t.n + '. ' + esc(t.short) + '</div>' +
+        '<div class="ink">' + esc(t.name) + '</div>' +
+        '<div class="tint">Lead: ' + esc(t.lead.name) + ', ' + esc(t.lead.institution) + '</div>' +
+        '<div class="meta"><code>' + t.token + '</code> ' + t.colour + '<br>' +
+        (t.partners.length ? 'Partners: ' + t.partners.map(function (p) { return esc(p.name) + ' (' + esc(p.role) + ')'; }).join('; ') : 'Partners: none listed yet') + '</div>';
+      box.appendChild(d);
+    });
+  })();
 </script>
 </body>
 </html>
