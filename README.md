@@ -138,7 +138,9 @@ De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de 
 
 ## Iconen
 
-`assets/icons/puzzle-piece.svg` is het DURF-puzzelstuk (klasse `.durf-puzzle`). De SURF-pictogrammen staan in `assets/icons/surf/` (zwarte PNG's met transparante achtergrond, 252 × 242) en een deel als vector in `assets/icons/surf-svg/`. Gebruik ze als masker, dan nemen ze de kleur over:
+`assets/icons/puzzle-piece.svg` is het DURF-puzzelstuk (klasse `.durf-puzzle`).
+
+De DURF-puzzel staat in `assets/icons/puzzle-set/`: zes verschillende stukken, één per thema (`piece-1.svg` tot en met `piece-6.svg`), die samen een puzzel van 3 × 2 vormen (`puzzle-set.svg`, thema 1 tot en met 3 boven, 4 tot en met 6 onder). Alle stukken hebben hetzelfde kader (viewBox -35 -35 170 170, het vak zelf is 0 tot 100), dus een stuk op (kolom × 100, rij × 100) past precies, en een pictogram in het midden van het kader staat midden op het stuk. In een pagina: `<span class="durf-piece" data-theme-n="3"></span>`, grootte via `--durf-piece-size`. De vormen komen uit `tools/puzzle-set.py`; pas dat script aan en draai het opnieuw. De SURF-pictogrammen staan in `assets/icons/surf/` (zwarte PNG's met transparante achtergrond, 252 × 242) en een deel als vector in `assets/icons/surf-svg/`. Gebruik ze als masker, dan nemen ze de kleur over:
 
     <span class="durf-pictogram" data-theme-n="3"
           style="--durf-pictogram: url(https://durf-project.github.io/durf-design-system/assets/icons/surf/research/research-01.png)"></span>
@@ -146,6 +148,10 @@ De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de 
 Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (standaard 3rem). Dit is SURF-merkmateriaal: gebruik het alleen voor DURF en SURF.
 
 ## Wijzigingen
+
+### 1.1.6
+
+De DURF-puzzel: zes verschillende puzzelstukken, één per thema, die in elkaar passen (`assets/icons/puzzle-set/`, generator `tools/puzzle-set.py`), en de klasse `.durf-piece`. Gebruikt op de themaposters en de openingsposter van de Federation Day. `.durf-puzzle` blijft zoals hij was.
 
 ### 1.1.5
 
