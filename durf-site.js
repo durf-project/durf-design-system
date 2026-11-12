@@ -402,7 +402,19 @@
     }
   };
 
+  /* ---------- #hash: open accordion items and land below the topbar ---------- */
+  function openHash() {
+    if (!location.hash) return;
+    var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!t) return;
+    if (t.tagName === 'DETAILS') t.open = true;
+    var d = t.closest && t.closest('details'); if (d) d.open = true;
+    t.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
+
   /* ---------- rendering ---------- */
+
+  var USED_IDS = {};
 
   function slug(s) {
     return String(s).toLowerCase().replace(/<[^>]+>/g, '').replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
@@ -416,10 +428,19 @@
     embedVideos(frag);
     buttonize(frag);
     decorateLinks(frag);
-    frag.querySelectorAll('h2, h3').forEach(function (h) { if (!h.id) h.id = slug(h.textContent); });
+    var sectionId = meta.id || name.replace(/\.md$/, '').replace(/^\d+[a-z]?-/, '');
+    USED_IDS[sectionId] = true;
+    // Heading ids must be unique on the page: a heading with the same text as its
+    // section ("## Announcements" in #announcements) gets a suffix instead.
+    frag.querySelectorAll('h2, h3').forEach(function (h) {
+      if (h.id) { USED_IDS[h.id] = true; return; }
+      var base = slug(h.textContent) || 'section', id = base, i = 2;
+      while (USED_IDS[id] || document.getElementById(id)) id = base + '-' + (i++);
+      USED_IDS[id] = true; h.id = id;
+    });
 
     var section = el('section', 'durf-section durf-layout-' + layout);
-    section.id = meta.id || name.replace(/\.md$/, '').replace(/^\d+[a-z]?-/, '');
+    section.id = sectionId;
     section.dataset.source = CONTENT + name;
     var th = themeOf(meta.theme);
     if (th) section.setAttribute('data-theme-n', th);
@@ -500,10 +521,10 @@
         box.innerHTML = '';
         entries.forEach(function (e) { box.appendChild(e.section); });
         setupNav(entries);
-        if (location.hash) {
-          var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-          if (t) { if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView(); }
-        }
+        openHash();
+        // Lazy images above the target change the layout while they load: jump again once they are in.
+        window.addEventListener('load', function () { openHash(); }, { once: true });
+        window.addEventListener('hashchange', function () { openHash(); });
         document.dispatchEvent(new CustomEvent('durf:rendered', { detail: { sections: entries.map(function (e) { return e.section.id; }) } }));
       })
       .catch(showError);

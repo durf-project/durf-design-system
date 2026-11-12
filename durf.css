@@ -288,3 +288,10 @@ body[data-sidebar-layout] #app-shell,
 .durf-footer { margin-top: 3rem; padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: .875rem; }
 .durf-footer a { font-weight: 600; }
 html[data-embed] .durf-footer, html[data-embed] .durf-page-head { display: none; }
+
+/* Round logo in dark mode: the ring text in #177ABF is too dark on a dark page,
+   so the dark variant (ring text #5BB0EA, same mark) replaces it. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) img[src$="durf-logo.svg"] { content: url("assets/durf-logo-dark.svg"); }
+}
+:root[data-theme="dark"] img[src$="durf-logo.svg"] { content: url("assets/durf-logo-dark.svg"); }
