@@ -13,7 +13,7 @@
   // De zes thema's, gelijk aan durf-themes.json (bron: de DURF-roadmap).
   // Pagina's lezen dit via window.DURF.themes in plaats van eigen kleurlijsten.
   var DATA = {
-    "version": "1.1.3",
+    "version": "1.1.4",
     "source": "DURF roadmap workbook; theme leads and project roles as set by the project team (November 2026)",
     "project": {
       "name": "Dutch Repository Federation",
@@ -166,8 +166,8 @@
     { slug: 'project-page',               label: 'Home' },
     { slug: 'position-paper',             label: 'Position paper' },
     { slug: 'durf-gantt',                 label: 'Roadmap' },
-    { slug: 'durf-data-mesh-architecture', label: 'Data contracts' },
-    { slug: 'dashboards',                 label: 'Dashboards' }
+    { slug: 'dashboards',                 label: 'Dashboards' },
+    { slug: 'durf-data-mesh-architecture', label: 'Data mesh' }
   ];
   var EXTRA = [
     { href: 'https://github.com/durf-project', label: 'GitHub' }
