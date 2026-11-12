@@ -1,13 +1,17 @@
 {
-  "version": "1.1.1",
-  "source": "DURF roadmap workbook; theme coordinators from the DURF full proposal, section 4.2 Team composition",
+  "version": "1.1.2",
+  "source": "DURF roadmap workbook; theme leads and project roles as set by the project team (November 2026)",
   "project": {
     "name": "Dutch Repository Federation",
     "short": "DURF",
     "start": "2026-06-01",
     "end": "2030-05-31",
+    "lead": {
+      "name": "Lois van Zomeren",
+      "institution": "VU Amsterdam"
+    },
     "manager": {
-      "name": "Maurice Vanderfeesten",
+      "name": "Lois van Zomeren",
       "institution": "VU Amsterdam"
     },
     "techLead": {
@@ -23,12 +27,12 @@
       "colour": "#EE7628",
       "token": "--durf-theme-1",
       "lead": {
-        "name": "Alastair Dunning",
-        "institution": "TU Delft",
-        "contact": "Alastair Dunning, theme lead at TU Delft, with co-lead Maurice Vanderfeesten (VU Amsterdam)",
+        "name": "Simone Kortekaas",
+        "institution": "KB National Library",
+        "contact": "Simone Kortekaas (KB National Library) and Maurice Vanderfeesten (SURF), theme leads",
         "coLead": {
           "name": "Maurice Vanderfeesten",
-          "institution": "VU Amsterdam"
+          "institution": "SURF"
         }
       },
       "partners": [
@@ -93,9 +97,9 @@
       "colour": "#17A95D",
       "token": "--durf-theme-4",
       "lead": {
-        "name": "Simone Kortekaas",
+        "name": "Ingeborg Verheul",
         "institution": "KB National Library",
-        "contact": "Simone Kortekaas, theme lead at the KB National Library"
+        "contact": "Ingeborg Verheul, theme lead at the KB National Library"
       },
       "partners": [
         {
@@ -133,9 +137,10 @@
       "colour": "#83201B",
       "token": "--durf-theme-6",
       "lead": {
-        "name": "Naomi Wahls van Gils",
-        "institution": "TU Delft",
-        "contact": "Naomi Wahls van Gils, theme lead at TU Delft"
+        "name": null,
+        "institution": null,
+        "vacant": true,
+        "contact": "the DURF project team (the theme lead role is vacant)"
       },
       "partners": []
     }

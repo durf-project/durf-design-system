@@ -9,7 +9,7 @@ theme-dots: true
 
 ### 1. Governance of the Federation and Netherlands Research Portal
 
-Lead: Alastair Dunning (TU Delft), with co-lead Maurice Vanderfeesten (VU Amsterdam). Partner: SURF (community management, legal advice, project assistance).
+Leads: Simone Kortekaas (KB National Library) and Maurice Vanderfeesten (SURF). Partner: SURF (community management, legal advice, project assistance).
 
 ### 2. Metadata Quality Improvement
 
@@ -21,7 +21,7 @@ Lead: Pascal Braak (University of Amsterdam). Partners: WUR (tech lead), SURF (c
 
 ### 4. KB National Library e-Depot Archiving
 
-Lead: Simone Kortekaas (KB National Library). Partners: WUR (tech lead), SURF (legal).
+Lead: Ingeborg Verheul (KB National Library). Partners: WUR (tech lead), SURF (legal).
 
 ### 5. Metadata Distribution & Discovery Optimization
 
@@ -29,4 +29,4 @@ Lead: Rutger de Jong (Leiden University). Partner: WUR (tech lead).
 
 ### 6. NL Research Portal Update
 
-Lead: Naomi Wahls van Gils (TU Delft). No partners listed yet.
+Lead: vacant. No partners listed yet.
