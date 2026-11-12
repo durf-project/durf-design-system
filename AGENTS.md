@@ -27,7 +27,7 @@ Load, in this order, in `<head>`:
 - Stay backward compatible: keep class names, tokens, data attributes (`data-accent`, `data-theme-n`, `data-topbar="off"`, `data-durf-theme`, `data-feedback-repo`), the localStorage key `durf-theme`, the embed contract (`?embed`, `html[data-embed]`, `postMessage` type `durf-embed-theme`) and the feedback button.
 - Theme data lives twice: `durf-themes.json` and `DATA` in `durf-nav.js`. Change both together; they must stay identical.
 - The site menu is `SITES` in `durf-nav.js`, and only there.
-- `assets/durf-mark.svg` is the owner's original file with a C2PA manifest: never edit it. `assets/durf-logo.svg` and the PNG icons are generated from it (ring text as outlines, Nunito ExtraBold).
+- `assets/durf-mark.svg` is the owner's original file with a C2PA manifest: never edit it. `assets/durf-logo.svg` (the logo used everywhere: the mark without ring text), `assets/durf-logo-ring.svg` (round logo, ring text as outlines, Nunito ExtraBold) and the PNG icons are generated from it.
 - Do not edit `lib/` by hand: those are the published Oat 1.0.0 and marked 13.0.3 files with their licences.
 - Before a release, test this page, `examples/site-demo/` and at least one existing site page against the local copy, light and dark, at 1440 and 390 px, and look at the screenshots.
 - `README.md` is in Dutch and holds the changelog; update it with every change.

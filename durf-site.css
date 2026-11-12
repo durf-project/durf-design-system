@@ -260,11 +260,11 @@ html { scroll-padding-top: calc(var(--topbar-h) + 3.5rem); }
 .durf-footer.durf-footer--site { margin-top: 0; padding: 0; border-top: 0; background: var(--surface); color: var(--muted-foreground); font-size: .9375rem; }
 .durf-footer--site > .durf-colour-strip { height: .375rem; }
 .durf-footer__inner { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2rem; align-items: start; padding-block: 2.5rem 3rem; }
-.durf-footer__logo { width: 6.5rem; height: auto; display: block; }
+.durf-footer__logo { width: 5rem; height: auto; display: block; }
 .durf-footer__text { max-width: var(--reading-width); }
 .durf-footer__text p { margin: 0 0 .75rem; }
 .durf-footer__text strong { color: var(--foreground); }
-@media (max-width: 40rem) { .durf-footer__inner { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } .durf-footer__logo { width: 5rem; } }
+@media (max-width: 40rem) { .durf-footer__inner { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } .durf-footer__logo { width: 4rem; } }
 
 .durf-loading { padding: 4rem 1.5rem; text-align: center; color: var(--muted-foreground); }
 

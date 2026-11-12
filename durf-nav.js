@@ -13,7 +13,7 @@
   // De zes thema's, gelijk aan durf-themes.json (bron: de DURF-roadmap).
   // Pagina's lezen dit via window.DURF.themes in plaats van eigen kleurlijsten.
   var DATA = {
-    "version": "1.1.4",
+    "version": "1.1.5",
     "source": "DURF roadmap workbook; theme leads and project roles as set by the project team (November 2026)",
     "project": {
       "name": "Dutch Repository Federation",
@@ -183,7 +183,7 @@
   API.project = DATA.project;
   API.themes = DATA.themes;
   API.theme = function (n) { n = Number(n); return DATA.themes.filter(function (t) { return t.n === n; })[0] || null; };
-  API.assets = { logo: DS + 'assets/durf-logo.svg', mark: DS + 'assets/durf-mark.svg', favicon: DS + 'assets/favicon.svg', og: DS + 'assets/durf-og.png' };
+  API.assets = { logo: DS + 'assets/durf-logo.svg', logoRing: DS + 'assets/durf-logo-ring.svg', mark: DS + 'assets/durf-mark.svg', favicon: DS + 'assets/favicon.svg', og: DS + 'assets/durf-og.png' };
   var SCRIPT = document.currentScript || {};
   var OPT = SCRIPT.dataset || {};   // data-topbar="off", data-durf-theme="N" op de script-tag
 
