@@ -53,14 +53,14 @@ De bron is de DURF-roadmap. Per thema N (1 tot en met 6) zijn er vier tokens:
     --durf-theme-N-tint   zachte achtergrond in de themakleur
     --durf-theme-N-on     tekstkleur op een vlak in de volle themakleur
 
-| Nr | Thema | Kort | Kleur | Lead |
-|---|---|---|---|---|
-| 1 | Governance of the Federation and Netherlands Research Portal | Governance | #EE7628 | Simone Kortekaas (KB) en Maurice Vanderfeesten (SURF) |
-| 2 | Metadata Quality Improvement | Metadata | #F6DA44 | Rutger de Jong (Leiden University) |
-| 3 | Full Text Capture | Fulltext | #177ABF | Pascal Braak (University of Amsterdam) |
-| 4 | KB National Library e-Depot Archiving | Archive | #17A95D | Ingeborg Verheul (KB National Library) |
-| 5 | Metadata Distribution & Discovery Optimization | Discovery | #5C1B61 | Rutger de Jong (Leiden University) |
-| 6 | NL Research Portal Update | Portal | #83201B | vacant |
+| Nr | Thema | Kort | Kleur |
+| --- | --- | --- | --- |
+| 1 | Governance of the Federation and Netherlands Research Portal | Governance | #EE7628 |
+| 2 | Metadata Quality Improvement | Metadata | #F6DA44 |
+| 3 | Full Text Capture | Fulltext | #177ABF |
+| 4 | KB National Library e-Depot Archiving | Archive | #17A95D |
+| 5 | Metadata Distribution & Discovery Optimization | Discovery | #5C1B61 |
+| 6 | NL Research Portal Update | Portal | #83201B |
 
 Zet `data-theme-n="N"` op een element, dan krijgt het `--theme-color`, `--theme-ink`, `--theme-tint` en `--theme-on`, en kleuren `.durf-theme-block`, `.durf-theme-dot`, `.durf-theme-chip`, `.durf-tag`, kaarten, kerncijfers en tijdlijnpillen mee.
 
@@ -135,15 +135,28 @@ Voor een dashboard met oat's sidebar-layout trekt `durf.css` de hoogte van de to
 
 De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de URL's hierboven meteen bijgewerkt. Wil je versies vastzetten, gebruik dan een tag en laad via jsDelivr: `https://cdn.jsdelivr.net/gh/durf-project/durf-design-system@v1.1.0/durf.css`.
 
+## Iconen
+
+`assets/icons/puzzle-piece.svg` is het DURF-puzzelstuk (klasse `.durf-puzzle`). De SURF-pictogrammen staan in `assets/icons/surf/` (zwarte PNG's met transparante achtergrond, 252 × 242) en een deel als vector in `assets/icons/surf-svg/`. Gebruik ze als masker, dan nemen ze de kleur over:
+
+    <span class="durf-pictogram" data-theme-n="3"
+          style="--durf-pictogram: url(https://durf-project.github.io/durf-design-system/assets/icons/surf/research/research-01.png)"></span>
+
+Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (standaard 3rem). Dit is SURF-merkmateriaal: gebruik het alleen voor DURF en SURF.
+
 ## Wijzigingen
+
+### 1.1.4
+
+De SURF-pictogrammen zijn overgenomen uit het SURF design system (met toestemming van de eigenaar, DURF is een SURF-project): 168 PNG's in `assets/icons/surf/<thema>/<thema>-NN.png` (collaboration, data, learning, network, research, security, strategy; 24 per thema) en 20 vector-versies uit de PID2Portal-pagina in `assets/icons/surf-svg/`. Met `.durf-pictogram` krijgt een pictogram de themakleur of de tekstkleur, ook in donker. In het menu heet "Data contracts" nu "Data mesh" en staat het na "Dashboards". De tabel met themakleuren hieronder heeft geen kolom met leads meer; die staan in `durf-themes.json`.
 
 ### 1.1.3
 
 Nieuw icoon `assets/icons/puzzle-piece.svg`: een puzzelstuk zoals in het DURF-logo, en de klasse `.durf-puzzle` die het in de themakleur toont, met het themanummer erin (`<span class="durf-puzzle" data-theme-n="3">3</span>`). De roadmap gebruikt dezelfde vorm. De standaard tagline is nu "Making the Dutch scholarly corpus global, open and resilient" (alt-tekst van het logo in de hero, de voorbeeldsite en `durf-og.png`). De ringtekst in het logo zelf is niet veranderd.
 
-### Waarom geen fonts-, components- of iconenmap zoals in het SURF design system
+### Waarom geen fonts- of components-map zoals in het SURF design system
 
-Het DURF design system is een dunne laag: lettertypes (Nunito en Source Sans 3) komen van Google Fonts via `durf.css`, de componenten zijn klassen in `durf.css` en `durf-site.css` bovenop Oat (`lib/`), en er is geen React-bundel. Het neemt geen onderdelen van het SURF design system over. De SURF-pictogrammen staan er niet in, omdat dat SURF-merkmateriaal is zonder vermelde licentie; eigen iconen staan in `assets/icons/`.
+Het DURF design system is een dunne laag: lettertypes (Nunito en Source Sans 3) komen van Google Fonts via `durf.css`, de componenten zijn klassen in `durf.css` en `durf-site.css` bovenop Oat (`lib/`), en er is geen React-bundel. Eigen iconen en de SURF-pictogrammen staan in `assets/icons/`.
 
 ### 1.1.2
 
