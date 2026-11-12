@@ -13,7 +13,7 @@
   // De zes thema's, gelijk aan durf-themes.json (bron: de DURF-roadmap).
   // Pagina's lezen dit via window.DURF.themes in plaats van eigen kleurlijsten.
   var DATA = {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "source": "DURF roadmap workbook; theme coordinators from the DURF full proposal, section 4.2 Team composition",
     "project": {
       "name": "Dutch Repository Federation",

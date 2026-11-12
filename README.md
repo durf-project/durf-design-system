@@ -137,6 +137,10 @@ De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de 
 
 ## Wijzigingen
 
+### 1.1.1
+
+Het ronde logo krijgt in donker een lichtere ringtekst (`assets/durf-logo-dark.svg`, `durf.css` wisselt hem vanzelf voor elke `<img>` met `durf-logo.svg`). `durf-site.js` opent een accordeon-item ook als de `#hash` later verandert, springt na het laden van afbeeldingen nog eens naar het doel, en geeft koppen nooit een id die al op de pagina bestaat.
+
 ### 1.1
 
 Oat 1.0.0 en marked 13.0.3 zitten nu in `lib/`; de nieuwe head-regels laden alles van de site van het design system, zonder jsDelivr. De oude jsDelivr-regel blijft werken.
