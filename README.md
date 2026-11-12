@@ -45,6 +45,10 @@ Alles is vector, er zitten geen rasterbeelden in de SVG's.
 
 Gebruik overal `durf-logo.svg`, het logo zonder de tekst eromheen; het werkt op licht en donker. In `durf-logo-ring.svg` staat de ringtekst als lijnen (Nunito ExtraBold, SIL Open Font License), zodat het logo er ook als `<img>` overal hetzelfde uitziet. Heeft een pagina geen eigen favicon, dan zet `durf-nav.js` `favicon.svg`.
 
+## Illustratie
+
+    https://durf-project.github.io/durf-design-system/assets/img/corpus-shared-resource.svg   het corpus als gedeelde bron (boekenkast)
+
 ## Themakleuren
 
 De bron is de DURF-roadmap. Per thema N (1 tot en met 6) zijn er vier tokens:
@@ -148,6 +152,10 @@ De DURF-puzzel staat in `assets/icons/puzzle-set/`: zes verschillende stukken, Ã
 Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (standaard 3rem). Dit is SURF-merkmateriaal: gebruik het alleen voor DURF en SURF.
 
 ## Wijzigingen
+
+### 1.1.8
+
+Nieuwe illustratie `assets/img/corpus-shared-resource.svg`: het Dutch Scholarly Communication Corpus als gedeelde bron, een boekenkast in de zes themakleuren met een netwerk van verbindingen. Volledig vector, tekst als lijnen (Nunito); gemaakt met `tools/corpus-shelf.py`. De home gebruikt hem in de sectie over het corpus.
 
 ### 1.1.7
 
