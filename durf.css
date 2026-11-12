@@ -296,6 +296,26 @@ body[data-sidebar-layout] #app-shell,
   -webkit-mask: url("assets/icons/puzzle-piece.svg") center / contain no-repeat;
           mask: url("assets/icons/puzzle-piece.svg") center / contain no-repeat;
 }
+/* De DURF-puzzel: zes verschillende stukken, één per thema, die samen een puzzel van 3 x 2 vormen
+   (thema 1-3 boven, 4-6 onder). Alle stukken hebben hetzelfde kader (assets/icons/puzzle-set/,
+   viewBox -35 -35 170 170), dus stukken op (kolom*100, rij*100) passen precies in elkaar.
+   <span class="durf-piece" data-theme-n="3"></span>; grootte via --durf-piece-size. */
+.durf-piece {
+  --durf-piece-size: 6rem;
+  display: inline-block; flex: 0 0 auto; vertical-align: middle;
+  width: var(--durf-piece-size); height: var(--durf-piece-size);
+  background: var(--puzzle-color, var(--theme-color, var(--accent-solid)));
+  -webkit-mask: var(--durf-piece) center / contain no-repeat;
+          mask: var(--durf-piece) center / contain no-repeat;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.durf-piece[data-theme-n="1"] { --durf-piece: url("assets/icons/puzzle-set/piece-1.svg"); }
+.durf-piece[data-theme-n="2"] { --durf-piece: url("assets/icons/puzzle-set/piece-2.svg"); }
+.durf-piece[data-theme-n="3"] { --durf-piece: url("assets/icons/puzzle-set/piece-3.svg"); }
+.durf-piece[data-theme-n="4"] { --durf-piece: url("assets/icons/puzzle-set/piece-4.svg"); }
+.durf-piece[data-theme-n="5"] { --durf-piece: url("assets/icons/puzzle-set/piece-5.svg"); }
+.durf-piece[data-theme-n="6"] { --durf-piece: url("assets/icons/puzzle-set/piece-6.svg"); }
+
 @media print { .durf-puzzle::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 
 /* Kleurstrook met de zes themakleuren, als merkaccent (bijvoorbeeld boven de voet) */
