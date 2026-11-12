@@ -55,12 +55,12 @@ De bron is de DURF-roadmap. Per thema N (1 tot en met 6) zijn er vier tokens:
 
 | Nr | Thema | Kort | Kleur | Lead |
 |---|---|---|---|---|
-| 1 | Governance of the Federation and Netherlands Research Portal | Governance | #EE7628 | Alastair Dunning (TU Delft), co-lead Maurice Vanderfeesten (VU Amsterdam) |
+| 1 | Governance of the Federation and Netherlands Research Portal | Governance | #EE7628 | Simone Kortekaas (KB) en Maurice Vanderfeesten (SURF) |
 | 2 | Metadata Quality Improvement | Metadata | #F6DA44 | Rutger de Jong (Leiden University) |
 | 3 | Full Text Capture | Fulltext | #177ABF | Pascal Braak (University of Amsterdam) |
-| 4 | KB National Library e-Depot Archiving | Archive | #17A95D | Simone Kortekaas (KB National Library) |
+| 4 | KB National Library e-Depot Archiving | Archive | #17A95D | Ingeborg Verheul (KB National Library) |
 | 5 | Metadata Distribution & Discovery Optimization | Discovery | #5C1B61 | Rutger de Jong (Leiden University) |
-| 6 | NL Research Portal Update | Portal | #83201B | Naomi Wahls van Gils (TU Delft) |
+| 6 | NL Research Portal Update | Portal | #83201B | vacant |
 
 Zet `data-theme-n="N"` op een element, dan krijgt het `--theme-color`, `--theme-ink`, `--theme-tint` en `--theme-on`, en kleuren `.durf-theme-block`, `.durf-theme-dot`, `.durf-theme-chip`, `.durf-tag`, kaarten, kerncijfers en tijdlijnpillen mee.
 
@@ -69,7 +69,7 @@ Zet `data-theme-n="N"` op een element, dan krijgt het `--theme-color`, `--theme-
 `durf-nav.js` zet `window.DURF`, synchroon, dus ook bruikbaar in een script direct erna:
 
     DURF.version      "1.1.0"
-    DURF.project      { name, short, start: "2026-06-01", end: "2030-05-31", manager, techLead }
+    DURF.project      { name, short, start: "2026-06-01", end: "2030-05-31", lead, manager (= lead, voor 1.1-pagina's), techLead }
     DURF.themes       [{ n, name, short, colour, token, lead: { name, institution, contact }, partners: [{ name, role }] }, ...]
     DURF.theme(n)     één thema, of null
     DURF.assets       { logo, mark, favicon, og }   volledige URL's
@@ -136,6 +136,10 @@ Voor een dashboard met oat's sidebar-layout trekt `durf.css` de hoogte van de to
 De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de URL's hierboven meteen bijgewerkt. Wil je versies vastzetten, gebruik dan een tag en laad via jsDelivr: `https://cdn.jsdelivr.net/gh/durf-project/durf-design-system@v1.1.0/durf.css`.
 
 ## Wijzigingen
+
+### 1.1.2
+
+Nieuwe leads: thema 1 Simone Kortekaas (KB) en Maurice Vanderfeesten (SURF), thema 4 Ingeborg Verheul (KB), thema 6 vacant (`lead.vacant: true`; de feedbackdialoog noemt dan het projectteam). Projectlead is Lois van Zomeren (VU Amsterdam): `DURF.project.lead`, en `manager` wijst naar dezelfde persoon.
 
 ### 1.1.1
 

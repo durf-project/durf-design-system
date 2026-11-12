@@ -253,7 +253,7 @@ el.setAttribute('data-theme-n', t.n);   // kleur via tokens, niet via t.colour</
       d.setAttribute('data-theme-n', t.n);
       d.innerHTML = '<div class="fill">' + t.n + '. ' + esc(t.short) + '</div>' +
         '<div class="ink">' + esc(t.name) + '</div>' +
-        '<div class="tint">Lead: ' + esc(t.lead.name) + ', ' + esc(t.lead.institution) + '</div>' +
+        '<div class="tint">Lead: ' + (t.lead.vacant ? 'vacant' : esc(t.lead.name) + ', ' + esc(t.lead.institution) + (t.lead.coLead ? ' and ' + esc(t.lead.coLead.name) + ', ' + esc(t.lead.coLead.institution) : '')) + '</div>' +
         '<div class="meta"><code>' + t.token + '</code> ' + t.colour + '<br>' +
         (t.partners.length ? 'Partners: ' + t.partners.map(function (p) { return esc(p.name) + ' (' + esc(p.role) + ')'; }).join('; ') : 'Partners: none listed yet') + '</div>';
       box.appendChild(d);
