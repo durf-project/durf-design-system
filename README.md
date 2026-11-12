@@ -140,7 +140,7 @@ De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de 
 
 `assets/icons/puzzle-piece.svg` is het DURF-puzzelstuk (klasse `.durf-puzzle`).
 
-De DURF-puzzel staat in `assets/icons/puzzle-set/`: zes verschillende stukken, één per thema (`piece-1.svg` tot en met `piece-6.svg`), die samen een puzzel van 3 × 2 vormen (`puzzle-set.svg`, thema 1 tot en met 3 boven, 4 tot en met 6 onder). Alle stukken hebben hetzelfde kader (viewBox -35 -35 170 170, het vak zelf is 0 tot 100), dus een stuk op (kolom × 100, rij × 100) past precies, en een pictogram in het midden van het kader staat midden op het stuk. In een pagina: `<span class="durf-piece" data-theme-n="3"></span>`, grootte via `--durf-piece-size`. De vormen komen uit `tools/puzzle-set.py`; pas dat script aan en draai het opnieuw. De SURF-pictogrammen staan in `assets/icons/surf/` (zwarte PNG's met transparante achtergrond, 252 × 242) en een deel als vector in `assets/icons/surf-svg/`. Gebruik ze als masker, dan nemen ze de kleur over:
+De DURF-puzzel staat in `assets/icons/puzzle-set/`: zes verschillende stukken, één per thema (`piece-1.svg` tot en met `piece-6.svg`), die samen een puzzel van 3 × 2 vormen (`puzzle-set.svg`, thema 1 tot en met 3 boven, 4 tot en met 6 onder). Alle stukken hebben hetzelfde kader (viewBox -26 -26 152 152, het vak zelf is 0 tot 100), dus een stuk op (kolom × 100, rij × 100) past precies, en een pictogram in het midden van het kader staat midden op het stuk. In een pagina: `<span class="durf-piece" data-theme-n="3"></span>`, grootte via `--durf-piece-size`. Vorm zoals de SURF-puzzelstukken: afgeronde hoeken, ronde knoppen en ronde uitsparingen. Zet er een wit pictogram op. De vormen komen uit `tools/puzzle-set.py`; pas dat script aan en draai het opnieuw. De SURF-pictogrammen staan in `assets/icons/surf/` (zwarte PNG's met transparante achtergrond, 252 × 242) en een deel als vector in `assets/icons/surf-svg/`. Gebruik ze als masker, dan nemen ze de kleur over:
 
     <span class="durf-pictogram" data-theme-n="3"
           style="--durf-pictogram: url(https://durf-project.github.io/durf-design-system/assets/icons/surf/research/research-01.png)"></span>
@@ -148,6 +148,10 @@ De DURF-puzzel staat in `assets/icons/puzzle-set/`: zes verschillende stukken, �
 Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (standaard 3rem). Dit is SURF-merkmateriaal: gebruik het alleen voor DURF en SURF.
 
 ## Wijzigingen
+
+### 1.1.7
+
+De DURF-puzzel heeft nu de vorm van de SURF-puzzelstukken: vierkanten met licht afgeronde hoeken en een ronde knop of een ronde uitsparing midden op een zijde. Het kader van elk stuk is nu viewBox -26 -26 152 152. Een wit pictogram op het gekleurde stuk, zoals bij SURF's tekst-met-icoon.
 
 ### 1.1.6
 
