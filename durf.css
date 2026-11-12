@@ -196,7 +196,7 @@ body[data-sidebar-layout] #app-shell,
 /* ---------- 4. Paginakop ---------- */
 .durf-page-head { border-bottom: 1px solid var(--border); padding-block: 2.5rem 2rem; }
 .durf-page-head__inner { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
-.durf-page-head__logo { width: 7rem; height: 7rem; flex: 0 0 auto; }
+.durf-page-head__logo { width: 6rem; height: 6rem; object-fit: contain; flex: 0 0 auto; }
 .durf-page-head__text { flex: 1 1 20rem; min-width: 0; }
 .durf-page-head h1 { margin: 0; font-size: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem); line-height: 1.1; }
 .durf-page-head .byline { margin: .6rem 0 0; color: var(--muted-foreground); font-weight: 600; }
@@ -309,12 +309,12 @@ body[data-sidebar-layout] #app-shell,
 .durf-footer a { font-weight: 600; }
 html[data-embed] .durf-footer, html[data-embed] .durf-page-head { display: none; }
 
-/* Round logo in dark mode: the ring text in #177ABF is too dark on a dark page,
-   so the dark variant (ring text #5BB0EA, same mark) replaces it. */
+/* The logo (durf-logo.svg) is the mark without ring text and works on light and dark.
+   The round logo with ring text (durf-logo-ring.svg) gets a lighter ring text in dark mode. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) img[src$="durf-logo.svg"] { content: url("assets/durf-logo-dark.svg"); }
+  :root:not([data-theme="light"]) img[src$="durf-logo-ring.svg"] { content: url("assets/durf-logo-ring-dark.svg"); }
 }
-:root[data-theme="dark"] img[src$="durf-logo.svg"] { content: url("assets/durf-logo-dark.svg"); }
+:root[data-theme="dark"] img[src$="durf-logo-ring.svg"] { content: url("assets/durf-logo-ring-dark.svg"); }
 
 /* SURF-pictogram als masker, in de themakleur of de tekstkleur:
    <span class="durf-pictogram" data-theme-n="3" style="--durf-pictogram: url(.../assets/icons/surf/research/research-01.png)"></span> */

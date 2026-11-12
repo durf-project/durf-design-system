@@ -34,7 +34,8 @@ Optioneel kies je een accent per site met `<html data-accent="theme-2">` (`theme
 
 Alles is vector, er zitten geen rasterbeelden in de SVG's.
 
-    https://durf-project.github.io/durf-design-system/assets/durf-logo.svg         rond logo met ringtekst
+    https://durf-project.github.io/durf-design-system/assets/durf-logo.svg         logo: het beeldmerk zonder ringtekst, gebruik dit overal
+    https://durf-project.github.io/durf-design-system/assets/durf-logo-ring.svg    rond logo met ringtekst (en -dark), alleen als het echt nodig is
     https://durf-project.github.io/durf-design-system/assets/durf-mark.svg         beeldmerk, origineel bestand van de eigenaar (met C2PA-herkomstgegevens, niet bewerken)
     https://durf-project.github.io/durf-design-system/assets/favicon.svg           beeldmerk, vierkant en klein, ook in de topbalk
     https://durf-project.github.io/durf-design-system/assets/favicon-32.png
@@ -42,7 +43,7 @@ Alles is vector, er zitten geen rasterbeelden in de SVG's.
     https://durf-project.github.io/durf-design-system/assets/durf-mark-512.png
     https://durf-project.github.io/durf-design-system/assets/durf-og.png           1200 × 630, voor og:image
 
-In `durf-logo.svg` staat de ringtekst als lijnen (Nunito ExtraBold, SIL Open Font License), zodat het logo er ook als `<img>` overal hetzelfde uitziet. Heeft een pagina geen eigen favicon, dan zet `durf-nav.js` `favicon.svg`.
+Gebruik overal `durf-logo.svg`, het logo zonder de tekst eromheen; het werkt op licht en donker. In `durf-logo-ring.svg` staat de ringtekst als lijnen (Nunito ExtraBold, SIL Open Font License), zodat het logo er ook als `<img>` overal hetzelfde uitziet. Heeft een pagina geen eigen favicon, dan zet `durf-nav.js` `favicon.svg`.
 
 ## Themakleuren
 
@@ -145,6 +146,10 @@ De repo staat op GitHub Pages (branch main, map root), dus na een merge zijn de 
 Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (standaard 3rem). Dit is SURF-merkmateriaal: gebruik het alleen voor DURF en SURF.
 
 ## Wijzigingen
+
+### 1.1.5
+
+Het logo is overal het beeldmerk zonder ringtekst: `assets/durf-logo.svg` is nu dat beeldmerk (URL ongewijzigd, dus alle sites volgen vanzelf), ook de deelafbeelding `durf-og.png`. Het ronde logo met ringtekst heet nu `assets/durf-logo-ring.svg` (donker: `durf-logo-ring-dark.svg`); `durf-logo-dark.svg` blijft bestaan als kopie van het nieuwe logo. Logo in paginakop en sitevoet iets kleiner, omdat het beeldmerk het vak meer vult. `DURF.assets.logoRing` erbij.
 
 ### 1.1.4
 
