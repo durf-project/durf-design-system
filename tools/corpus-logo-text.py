@@ -52,10 +52,12 @@ for i, (txt, wght, col) in enumerate(LINES):
         gs[n].draw(TransformPen(pen, (s, 0, 0, -s, x, y))); x += gs[n].width * s
     paths.append(f'<path fill="{col}" d="{pen.getCommands()}"/>')
     y += lh
+PAD = 60   # white margin all round
 H = y - lh + size * .3 - y0
-out = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x0:g} {y0:g} {w:g} {H:.0f}" width="{w:g}" height="{H:.0f}" role="img" aria-labelledby="t">\n'
+X0, Y0, W2, H2 = x0 - PAD, y0 - PAD, w + 2 * PAD, H + 2 * PAD
+out = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{X0:g} {Y0:g} {W2:g} {H2:.0f}" width="{W2:g}" height="{H2:.0f}" role="img" aria-labelledby="t">\n'
        f'<title id="t">Dutch Scholarly Communication Corpus, a shared resource</title>\n'
-       f'<rect x="{x0:g}" y="{y0:g}" width="{w:g}" height="{H:.0f}" fill="#fff"/>\n'
+       f'<rect x="{X0:g}" y="{Y0:g}" width="{W2:g}" height="{H2:.0f}" fill="#fff"/>\n'
        f'<g>{inner.strip()}</g>\n' + "\n".join(paths) + "\n</svg>\n")
 OUT.write_text(out)
 print("wrote", OUT, len(out) // 1024, "KB")
