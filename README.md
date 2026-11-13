@@ -47,7 +47,10 @@ Gebruik overal `durf-logo.svg`, het logo zonder de tekst eromheen; het werkt op 
 
 ## Illustratie
 
-    https://durf-project.github.io/durf-design-system/assets/img/corpus-shared-resource.svg   het corpus als gedeelde bron (boekenkast)
+    https://durf-project.github.io/durf-design-system/assets/img/scholarly-corpus-logo.svg        het corpus als gedeelde bron (boekenkast), zonder tekst
+    https://durf-project.github.io/durf-design-system/assets/img/scholarly-corpus-logo+text.svg   hetzelfde, met "Dutch scholarly communication corpus, a shared resource" eronder
+
+`scholarly-corpus-logo.svg` is het originele bestand van de eigenaar met C2PA-herkomstgegevens: niet bewerken. De versie met tekst maakt `tools/corpus-logo-text.py` ervan (tekst als lijnen, Nunito). In een URL schrijf je de `+` als `%2B` als je zeker wilt zijn.
 
 ## Themakleuren
 
@@ -152,6 +155,10 @@ De DURF-puzzel staat in `assets/icons/puzzle-set/`: zes verschillende stukken, Ã
 Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (standaard 3rem). Dit is SURF-merkmateriaal: gebruik het alleen voor DURF en SURF.
 
 ## Wijzigingen
+
+### 1.1.9
+
+Nieuwe corpusillustratie van de eigenaar: `assets/img/scholarly-corpus-logo.svg` (zonder tekst, origineel met C2PA) en `assets/img/scholarly-corpus-logo+text.svg` (met tekst eronder, gemaakt door `tools/corpus-logo-text.py`). Ze vervangen `corpus-shared-resource.svg` en `tools/corpus-shelf.py` uit 1.1.8.
 
 ### 1.1.8
 
