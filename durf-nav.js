@@ -13,7 +13,7 @@
   // De zes thema's, gelijk aan durf-themes.json (bron: de DURF-roadmap).
   // Pagina's lezen dit via window.DURF.themes in plaats van eigen kleurlijsten.
   var DATA = {
-    "version": "1.1.9",
+    "version": "1.1.10",
     "source": "DURF roadmap workbook; theme leads and project roles as set by the project team (November 2026)",
     "project": {
       "name": "Dutch Repository Federation",
@@ -200,6 +200,19 @@
   window.addEventListener('message', function (e) {
     if (e.data && e.data.type === 'durf-embed-theme') applyTheme(e.data.theme);
   });
+  // In een embed gaan de bladertoetsen (pijlen, PageUp/PageDown, spatie) naar de bovenliggende
+  // pagina, zodat een presentatie met een klikker blijft werken als er in de embed is geklikt.
+  // postMessage: { type: 'durf-embed-key', key }.
+  if (root.hasAttribute('data-embed') && window.parent !== window) {
+    document.addEventListener('keydown', function (e) {
+      var keys = ['ArrowRight', 'ArrowLeft', 'PageDown', 'PageUp', ' ', 'Home', 'End'];
+      var t = e.target, tag = t && t.tagName;
+      if (keys.indexOf(e.key) < 0 || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+      e.preventDefault();
+      window.parent.postMessage({ type: 'durf-embed-key', key: e.key, shiftKey: e.shiftKey }, '*');
+    });
+  }
 
   var ICON = {
     menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>',
@@ -408,7 +421,7 @@
     favicon();
     if (OPT.topbar !== 'off') build();
     // Niet in embeds: daar is de pagina een onderdeel van een andere pagina.
-    if (!root.hasAttribute('data-embed')) buildFeedback();
+    if (!root.hasAttribute('data-embed') && OPT.feedback !== 'off') buildFeedback();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

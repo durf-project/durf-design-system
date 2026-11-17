@@ -156,6 +156,10 @@ Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (s
 
 ## Wijzigingen
 
+### 1.1.10
+
+In een embed (`?embed` in een iframe) stuurt `durf-nav.js` de bladertoetsen (pijlen, PageUp/PageDown, spatie, Home/End) door naar de bovenliggende pagina met `postMessage({ type: 'durf-embed-key', key })`. Zo blijft een presentatie met een klikker werken nadat er in een embed is geklikt. Met `data-feedback="off"` op de script-tag laat een pagina (zoals een presentatie) de feedbackknop weg.
+
 ### 1.1.9
 
 Nieuwe corpusillustratie van de eigenaar: `assets/img/scholarly-corpus-logo.svg` (zonder tekst, origineel met C2PA) en `assets/img/scholarly-corpus-logo+text.svg` (met tekst eronder, gemaakt door `tools/corpus-logo-text.py`). Ze vervangen `corpus-shared-resource.svg` en `tools/corpus-shelf.py` uit 1.1.8.
