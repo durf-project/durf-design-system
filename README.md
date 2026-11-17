@@ -156,6 +156,10 @@ Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (s
 
 ## Wijzigingen
 
+### 1.1.11
+
+Dialoogvensters scrollen nog maar op één plek: het venster zelf scrollt niet meer (de browser en Oat lieten dat toe, waardoor er twee scrollbalken kwamen), alleen het middendeel tussen kop en voet. Geldt voor elke `<dialog>` met een `<form>` erin.
+
 ### 1.1.10
 
 In een embed (`?embed` in een iframe) stuurt `durf-nav.js` de bladertoetsen (pijlen, PageUp/PageDown, spatie, Home/End) door naar de bovenliggende pagina met `postMessage({ type: 'durf-embed-key', key })`. Zo blijft een presentatie met een klikker werken nadat er in een embed is geklikt. Met `data-feedback="off"` op de script-tag laat een pagina (zoals een presentatie) de feedbackknop weg.
