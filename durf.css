@@ -344,3 +344,11 @@ html[data-embed] .durf-footer, html[data-embed] .durf-page-head { display: none;
   -webkit-mask: var(--durf-pictogram) center / contain no-repeat;
           mask: var(--durf-pictogram) center / contain no-repeat;
 }
+
+/* Dialogs scroll in one place only. Browsers let a modal <dialog> scroll on its own and Oat caps it
+   at 85vh, so a dialog whose form (header, body, footer) is taller got two scroll bars. Now the
+   dialog itself never scrolls: the form fills it and its middle part scrolls. */
+dialog:modal:has(> form) { overflow: hidden; display: flex; flex-direction: column; }
+dialog:modal > form { flex: 1 1 auto; min-height: 0; max-height: 100%; display: flex; flex-direction: column; margin: 0; }
+dialog:modal > form > header, dialog:modal > form > footer { flex: 0 0 auto; }
+dialog:modal > form > :not(header):not(footer) { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
