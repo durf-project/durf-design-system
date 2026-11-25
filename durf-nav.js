@@ -13,7 +13,7 @@
   // De zes thema's, gelijk aan durf-themes.json (bron: de DURF-roadmap).
   // Pagina's lezen dit via window.DURF.themes in plaats van eigen kleurlijsten.
   var DATA = {
-    "version": "1.1.11",
+    "version": "1.1.12",
     "source": "DURF roadmap workbook; theme leads and project roles as set by the project team (November 2026)",
     "project": {
       "name": "Dutch Repository Federation",
@@ -167,7 +167,8 @@
     { slug: 'position-paper',             label: 'Position paper' },
     { slug: 'durf-gantt',                 label: 'Roadmap' },
     { slug: 'dashboards',                 label: 'Dashboards' },
-    { slug: 'durf-data-mesh-architecture', label: 'Data mesh' }
+    { slug: 'durf-data-mesh-architecture', label: 'Data mesh' },
+    { slug: 'gorc-profile',               label: 'GORC profile' }
   ];
   var EXTRA = [
     { href: 'https://github.com/durf-project', label: 'GitHub' }
@@ -289,7 +290,7 @@
   var FEEDBACK_EMAIL = 'durf@surf.nl';
   var ORG = 'https://github.com/durf-project/';
   // Repo per eerste padsegment; onbekende adressen (404) gaan naar de home.
-  var FEEDBACK_REPOS = ['project-page', 'position-paper', 'durf-gantt', 'durf-data-mesh-architecture', 'dashboards', 'durf-design-system'];
+  var FEEDBACK_REPOS = ['project-page', 'position-paper', 'durf-gantt', 'durf-data-mesh-architecture', 'dashboards', 'durf-design-system', 'gorc-profile'];
   // Wie de feedback leest en beantwoordt. Per thema (dashboards zetten data-durf-theme)
   // en per site. Pas namen hier aan, dan volgen alle pagina's.
   // Namen per thema komen uit DATA hierboven (lead.contact).
@@ -299,7 +300,8 @@
     'position-paper': 'the authors of the position paper',
     'durf-data-mesh-architecture': 'Maurice Vanderfeesten, author of this page',
     'durf-gantt': 'the DURF theme leads',
-    'dashboards': 'the DURF theme leads'
+    'dashboards': 'the DURF theme leads',
+    'gorc-profile': 'the theme 1 leads, Simone Kortekaas (KB) and Maurice Vanderfeesten (SURF)'
   };
   var DEFAULT_CONTACT = 'the DURF team';
 
