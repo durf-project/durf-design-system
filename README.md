@@ -156,6 +156,10 @@ Zonder `data-theme-n` krijgt het pictogram de tekstkleur. Grootte via `width` (s
 
 ## Wijzigingen
 
+### 1.1.12
+
+Nieuw item in het sitemenu: "GORC profile" (`/gorc-profile/`), het GORC-profiel van de Dutch Repository Federation Commons met een IST- en SOLL-scenario, de basis van het Federation Rule Book (thema 1). Feedback van die pagina gaat naar de repo `gorc-profile` en wordt beantwoord door de leads van thema 1.
+
 ### 1.1.11
 
 Dialoogvensters scrollen nog maar op één plek: het venster zelf scrollt niet meer (de browser en Oat lieten dat toe, waardoor er twee scrollbalken kwamen), alleen het middendeel tussen kop en voet. Geldt voor elke `<dialog>` met een `<form>` erin.
