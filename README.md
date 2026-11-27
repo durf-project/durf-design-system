@@ -48,7 +48,7 @@ Gebruik overal `durf-logo.svg`, het logo zonder de tekst eromheen; het werkt op 
 ## Illustratie
 
     https://durf-project.github.io/durf-design-system/assets/img/scholarly-corpus-logo.svg        het corpus als gedeelde bron (boekenkast), zonder tekst
-    https://durf-project.github.io/durf-design-system/assets/img/scholarly-corpus-logo+text.svg   hetzelfde, met "Dutch scholarly communication corpus, a shared resource" eronder
+    https://durf-project.github.io/durf-design-system/assets/img/scholarly-corpus-logo+text.svg   hetzelfde, met "Dutch scholarly knowledge corpus, a shared resource" eronder
 
 `scholarly-corpus-logo.svg` is het originele bestand van de eigenaar met C2PA-herkomstgegevens: niet bewerken. De versie met tekst maakt `tools/corpus-logo-text.py` ervan (tekst als lijnen, Nunito). In een URL schrijf je de `+` als `%2B` als je zeker wilt zijn.
 
@@ -174,7 +174,7 @@ Nieuwe corpusillustratie van de eigenaar: `assets/img/scholarly-corpus-logo.svg`
 
 ### 1.1.8
 
-Nieuwe illustratie `assets/img/corpus-shared-resource.svg`: het Dutch Scholarly Communication Corpus als gedeelde bron, een boekenkast in de zes themakleuren met een netwerk van verbindingen. Volledig vector, tekst als lijnen (Nunito); gemaakt met `tools/corpus-shelf.py`. De home gebruikt hem in de sectie over het corpus.
+Nieuwe illustratie `assets/img/corpus-shared-resource.svg`: het Dutch Scholarly Knowledge Corpus als gedeelde bron, een boekenkast in de zes themakleuren met een netwerk van verbindingen. Volledig vector, tekst als lijnen (Nunito); gemaakt met `tools/corpus-shelf.py`. De home gebruikt hem in de sectie over het corpus.
 
 ### 1.1.7
 
