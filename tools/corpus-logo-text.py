@@ -1,5 +1,5 @@
 """Make assets/img/scholarly-corpus-logo+text.svg from assets/img/scholarly-corpus-logo.svg:
-the corpus logo with "Dutch scholarly communication corpus / a shared resource" under it.
+the corpus logo with "Dutch scholarly knowledge corpus / a shared resource" under it.
 
 scholarly-corpus-logo.svg is the owner's original file with a C2PA manifest: never edit it.
 This script copies its drawing (not the manifest) into a new file and adds the text as
@@ -19,7 +19,7 @@ HERE = Path(__file__).resolve().parent.parent / "assets" / "img"
 SRC, OUT = HERE / "scholarly-corpus-logo.svg", HERE / "scholarly-corpus-logo+text.svg"
 NUNITO = sys.argv[1]
 NAVY, ORANGE = "#104C73", "#D9531E"
-LINES = [("DUTCH SCHOLARLY", 900, NAVY), ("COMMUNICATION CORPUS", 900, NAVY), ("A SHARED RESOURCE", 500, ORANGE)]
+LINES = [("DUTCH SCHOLARLY", 900, NAVY), ("KNOWLEDGE CORPUS", 900, NAVY), ("A SHARED RESOURCE", 500, ORANGE)]
 
 src = SRC.read_text()
 vb = re.search(r'viewBox="([^"]+)"', src).group(1)
@@ -56,7 +56,7 @@ PAD = 60   # white margin all round
 H = y - lh + size * .3 - y0
 X0, Y0, W2, H2 = x0 - PAD, y0 - PAD, w + 2 * PAD, H + 2 * PAD
 out = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{X0:g} {Y0:g} {W2:g} {H2:.0f}" width="{W2:g}" height="{H2:.0f}" role="img" aria-labelledby="t">\n'
-       f'<title id="t">Dutch Scholarly Communication Corpus, a shared resource</title>\n'
+       f'<title id="t">Dutch Scholarly Knowledge Corpus, a shared resource</title>\n'
        f'<rect x="{X0:g}" y="{Y0:g}" width="{W2:g}" height="{H2:.0f}" fill="#fff"/>\n'
        f'<g>{inner.strip()}</g>\n' + "\n".join(paths) + "\n</svg>\n")
 OUT.write_text(out)
